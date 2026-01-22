@@ -1,0 +1,1182 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================
+   PREMIUM DESIGN TOKENS - Maple Service Solution
+   Unified Light/Dark Mode with Perfect Blending
+   ============================================ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-aurora-1: var(--aurora-1);
+  --color-aurora-2: var(--aurora-2);
+  --color-aurora-3: var(--aurora-3);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+}
+
+:root {
+  /* ============================================
+     LIGHT MODE - Premium Toned (No Pure White)
+     ============================================ */
+  --radius: 1rem;
+
+  /* Background Colors - Indigo-tinted soft whites */
+  --bg-main: #F4F6FB;
+  --bg-alt: #EEF1F8;
+  --bg-soft: #E6ECFF;
+  --bg-accent: #E0E7FF;
+
+  --background: var(--bg-main);
+
+  /* Text Colors - WCAG AA Compliant */
+  --text-heading: #0F172A;
+  --text-body: #334155;
+  --text-muted: #64748B;
+  --text-subtle: #94A3B8;
+
+  --foreground: var(--text-heading);
+
+  /* Card & Surface Colors */
+  --card: var(--bg-alt);
+  --card-hover: var(--bg-main);
+  --card-strong: #FFFFFF;
+
+  --card-foreground: var(--text-body);
+
+  /* Button Colors */
+  --primary: #4F46E5;
+  --primary-foreground: #FFFFFF;
+
+  --secondary: var(--bg-main);
+  --secondary-foreground: #0F172A;
+
+  /* Muted & Accent Colors */
+  --muted: var(--bg-soft);
+  --muted-foreground: var(--text-muted);
+
+  --accent: var(--bg-accent);
+  --accent-foreground: #0F172A;
+
+  /* Border Colors */
+  --border: rgba(15, 23, 42, 0.08);
+  --input: rgba(15, 23, 42, 0.06);
+  --ring: rgba(79, 70, 229, 0.4);
+
+  /* Destructive */
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+
+  /* Aurora Gradients - Light Mode (Subtle Indigo) */
+  --aurora-1: #3B82F6;
+  --aurora-2: #6366F1;
+  --aurora-3: #8B5CF6;
+
+  /* Chart Colors */
+  --chart-1: #3B82F6;
+  --chart-2: #6366F1;
+  --chart-3: #8B5CF6;
+  --chart-4: #A78BFA;
+  --chart-5: #F472B6;
+}
+
+.dark {
+  /* ============================================
+     DARK MODE - Cinematic Deep (No Pitch Black)
+     ============================================ */
+  --radius: 1rem;
+
+  /* Background Colors - Deep indigo/charcoal */
+  --bg-main: #050816;
+  --bg-alt: #0B1024;
+  --bg-soft: #141A3A;
+  --bg-accent: #1E293B;
+
+  --background: var(--bg-main);
+
+  /* Text Colors - WCAG AA Compliant */
+  --text-heading: #E5E7EB;
+  --text-body: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-subtle: #64748B;
+
+  --foreground: var(--text-heading);
+
+  /* Card & Surface Colors */
+  --card: rgba(15, 23, 42, 0.55);
+  --card-hover: rgba(15, 23, 42, 0.70);
+  --card-strong: rgba(15, 23, 42, 0.85);
+
+  --card-foreground: var(--text-body);
+
+  /* Button Colors */
+  --primary: #E5E7EB;
+  --primary-foreground: #050816;
+
+  --secondary: var(--bg-alt);
+  --secondary-foreground: #E5E7EB;
+
+  /* Muted & Accent Colors */
+  --muted: var(--bg-soft);
+  --muted-foreground: var(--text-muted);
+
+  --accent: #3B82F6;
+  --accent-foreground: #E5E7EB;
+
+  /* Border Colors */
+  --border: rgba(229, 231, 235, 0.08);
+  --input: rgba(229, 231, 235, 0.12);
+  --ring: rgba(59, 130, 246, 0.4);
+
+  /* Destructive */
+  --destructive: #EF4444;
+  --destructive-foreground: #FCA5A5;
+
+  /* Aurora Gradients - Dark Mode (Cinematic) */
+  --aurora-1: #22D3EE;
+  --aurora-2: #6366F1;
+  --aurora-3: #A855F7;
+
+  /* Chart Colors */
+  --chart-1: #22D3EE;
+  --chart-2: #818CF8;
+  --chart-3: #34D399;
+  --chart-4: #F472B6;
+  --chart-5: #A78BFA;
+}
+
+/* ============================================
+   PRODUCTS PAGE THEME - Product Gallery Identity
+   ============================================ */
+
+/* ============================================
+   PRODUCTS PAGE THEME - Systems at Work (Enterprise)
+   ============================================ */
+[data-page="products"] {
+  /* LIGHT MODE — "Enterprise Cloud" */
+  --prod-bg: #F6F8FC;
+  --prod-bg-alt: #EEF2F8;
+  --prod-card: #FFFFFF;
+  --prod-border: #E2E8F0;
+  --prod-tint: #EBF0FF;
+  --prod-primary: #2563EB; /* enterprise blue */
+  --prod-secondary: #6366F1; /* indigo */
+  --prod-accent: #0EA5E9; /* tech highlight */
+  --prod-text: #0F172A;
+  --prod-muted: #475569;
+}
+
+.dark[data-page="products"] {
+  /* DARK MODE — "Infrastructure Core" */
+  --prod-bg: #050816;
+  --prod-bg-alt: #0B1024;
+  --prod-card: rgba(255,255,255,0.06);
+  --prod-border: rgba(255,255,255,0.10);
+  --prod-tint: rgba(96, 165, 250, 0.12);
+  --prod-primary: #60A5FA;
+  --prod-secondary: #818CF8;
+  --prod-accent: #22D3EE;
+  --prod-text: #E5E7EB;
+  --prod-muted: #9CA3AF;
+}
+
+/* Status Badge Colors */
+.status-live {
+  background: rgba(37, 99, 235, 0.15);
+  color: #2563EB;
+  border: 1px solid rgba(37, 99, 235, 0.30);
+}
+
+.dark .status-live {
+  background: rgba(37, 99, 235, 0.20);
+  color: #60A5FA;
+  border: 1px solid rgba(37, 99, 235, 0.40);
+}
+
+.status-beta {
+  background: rgba(99, 102, 241, 0.15);
+  color: #2563EB;
+  border: 1px solid rgba(99, 102, 241, 0.30);
+}
+
+.dark .status-beta {
+  background: rgba(99, 102, 241, 0.20);
+  color: #60A5FA;
+  border: 1px solid rgba(99, 102, 241, 0.40);
+}
+
+.status-coming-soon {
+  background: rgba(71, 85, 105, 0.15);
+  color: #475569;
+  border: 1px solid rgba(71, 85, 105, 0.30);
+}
+
+.dark .status-coming-soon {
+  background: rgba(71, 85, 105, 0.20);
+  color: #9CA3AF;
+  border: 1px solid rgba(71, 85, 105, 0.40);
+}
+
+/* ============================================
+   SERVICES PAGE THEME - Craft & Collaboration Studio
+   ============================================ */
+
+/* Light Mode: Studio Pearl + Indigo */
+[data-page="services"] {
+  --svc-bg: #F7F6FF;
+  --svc-bg-2: #F0F1FF;
+  --svc-card: #FFFFFF;
+  --svc-tint: #EAE7FF;
+  --svc-primary: #4F46E5;
+  --svc-secondary: #A78BFA;
+  --svc-border: #DEE0F8;
+  --svc-text: #0F172A;
+  --svc-muted: #475569;
+  --svc-overlay-light: rgba(247,246,255,0.40);
+  --svc-overlay-dark: rgba(6,8,26,0.50);
+}
+
+.dark[data-page="services"] {
+  /* Dark Mode: Studio Noir Indigo */
+  --svc-bg: #06081A;
+  --svc-bg-2: #0A0E24;
+  --svc-card: rgba(255,255,255,0.25);
+  --svc-tint: rgba(167,139,250,0.20);
+  --svc-primary: #818CF8;
+  --svc-secondary: #A78BFA;
+  --svc-border: rgba(255,255,255,0.20);
+  --svc-text: #F1F5F9;
+  --svc-muted: #9CA3AF;
+  --svc-overlay-light: rgba(247,246,255,0.40);
+  --svc-overlay-dark: rgba(6,8,26,0.50);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    color: var(--text-heading);
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    line-height: 1.25;
+  }
+
+  p {
+    font-family: var(--font-body), system-ui, sans-serif;
+    line-height: 1.6;
+    color: var(--text-body);
+  }
+
+  /* Scrollbar Styling - Premium Dark in Both Modes */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-alt);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--muted-foreground);
+    border-radius: 4px;
+    opacity: 0.5;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+    opacity: 0.8;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Premium Glass Card System */
+@layer utilities {
+  .glass {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.65),
+      rgba(255, 255, 255, 0.85)
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+  }
+
+  .dark .glass {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.55),
+      rgba(15, 23, 42, 0.75)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-strong {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.80),
+      rgba(255, 255, 255, 0.92)
+    );
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+  }
+
+  .dark .glass-strong {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.70),
+      rgba(15, 23, 42, 0.88)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  /* Aurora Gradient Background */
+  .aurora-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--aurora-1) / 0.35) 0%,
+      hsl(var(--aurora-2) / 0.28) 50%,
+      hsl(var(--aurora-3) / 0.35) 100%
+    );
+  }
+
+  .dark .aurora-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--aurora-1) / 0.28) 0%,
+      hsl(var(--aurora-2) / 0.20) 50%,
+      hsl(var(--aurora-3) / 0.25) 100%
+    );
+  }
+
+  .aurora-gradient-subtle {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--aurora-1) / 0.12) 0%,
+      hsl(var(--aurora-2) / 0.08) 50%,
+      hsl(var(--aurora-3) / 0.10) 100%
+    );
+  }
+
+  .dark .aurora-gradient-subtle {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--aurora-1) / 0.18) 0%,
+      hsl(var(--aurora-2) / 0.12) 50%,
+      hsl(var(--aurora-3) / 0.15) 100%
+    );
+  }
+
+  /* Noise Texture - Premium Subtle Grain */
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .dark .noise-overlay::before {
+    opacity: 0.035;
+  }
+
+  /* Grid Pattern - Subtle */
+  .grid-pattern {
+    background-image:
+      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.25;
+  }
+
+  /* Glow Effects - Soft, Not Harsh */
+  .glow-sm {
+    box-shadow: 0 0 20px 4px hsl(var(--aurora-1) / 0.25);
+  }
+
+  .glow-md {
+    box-shadow: 0 0 32px 8px hsl(var(--aurora-1) / 0.28);
+  }
+
+  .glow-lg {
+    box-shadow: 0 0 48px 12px hsl(var(--aurora-1) / 0.30);
+  }
+
+  /* Premium Card Hover - Smooth */
+  .card-hover {
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px -8px hsl(var(--text-muted) / 0.12);
+    border-color: hsl(var(--aurora-1) / 0.5);
+  }
+
+  /* Text Gradient - Cinematic */
+  .text-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--text-heading)) 0%,
+      hsl(var(--aurora-1)) 50%,
+      hsl(var(--aurora-2)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-premium {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--text-heading)) 0%,
+      hsl(var(--aurora-1)) 28%,
+      hsl(var(--aurora-2)) 56%,
+      hsl(var(--aurora-3)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shimmer 5s ease-in-out infinite;
+    background-size: 200% auto;
+  }
+
+/* Premium Intelligent forged word styling - luxury glow */
+.premium-intelligent {
+  background: linear-gradient(
+    90deg,
+    rgba(99, 102, 241, 1),
+    rgba(139, 92, 246, 1),
+    rgba(34, 211, 238, 1)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* Luxury multi-layer glow for cinematic effect */
+  text-shadow:
+    0 0 18px rgba(99, 102, 241, 0.18),
+    0 0 28px rgba(34, 211, 238, 0.12);
+
+  transition: all 0.6s ease-out;
+}
+
+.dark .premium-intelligent {
+  background: linear-gradient(
+    90deg,
+    rgba(229, 231, 235, 1),
+    rgba(168, 162, 158, 1),
+    rgba(59, 130, 246, 1)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* Dark mode luxury glow */
+  text-shadow:
+    0 0 18px rgba(229, 231, 235, 0.22),
+    0 0 28px rgba(168, 162, 158, 0.16);
+
+  transition: all 0.6s ease-out;
+}
+
+/* Premium word color gradients */
+
+/* Intelligent - Golden amber luxury with warmth */
+.intelligent-word {
+  background: linear-gradient(
+    135deg,
+    #FFB84D 0%,
+    #F59E0B 50%,
+    #FB923C 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #F59E0B;
+  box-shadow:
+    0 0 16px rgba(251, 191, 36, 0.25),
+    0 0 32px rgba(251, 191, 36, 0.15);
+  text-shadow:
+    0 0 8px rgba(251, 191, 36, 0.15);
+  transition: all 0.4s ease-out;
+}
+
+.dark .intelligent-word {
+  background: linear-gradient(
+    135deg,
+    #FFD766 0%,
+    #F59E0B 50%,
+    #D97706 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #F59E0B;
+  box-shadow:
+    0 0 16px rgba(217, 70, 239, 0.3),
+    0 0 32px rgba(217, 70, 239, 0.2);
+  text-shadow:
+    0 0 8px rgba(217, 70, 239, 0.3);
+  transition: all 0.4s ease-out;
+}
+
+/* Products - Vibrant emerald/teal premium */
+.products-word {
+  background: linear-gradient(
+    135deg,
+    #10B981 0%,
+    #059669 50%,
+    #34D399 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #059669;
+  box-shadow:
+    0 0 16px rgba(16, 185, 129, 0.25),
+    0 0 32px rgba(16, 185, 129, 0.18);
+  text-shadow:
+    0 0 8px rgba(16, 185, 129, 0.18);
+  transition: all 0.4s ease-out;
+}
+
+.dark .products-word {
+  background: linear-gradient(
+    135deg,
+    #065F46 0%,
+    #059669 50%,
+    #10B981 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #059669;
+  box-shadow:
+    0 0 16px rgba(6, 182, 212, 0.3),
+    0 0 32px rgba(6, 182, 212, 0.25);
+  text-shadow:
+    0 0 8px rgba(6, 182, 212, 0.3);
+  transition: all 0.4s ease-out;
+}
+
+/* That & Define - Warm amber/rose premium */
+.that-word,
+.define-word {
+  background: linear-gradient(
+    135deg,
+    #FB923C 0%,
+    #F59E0B 50%,
+    #EC4899 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #EC4899;
+  box-shadow:
+    0 0 16px rgba(236, 72, 153, 0.25),
+    0 0 32px rgba(236, 72, 153, 0.18);
+  text-shadow:
+    0 0 8px rgba(236, 72, 153, 0.18);
+  transition: all 0.4s ease-out;
+}
+
+.dark .that-word,
+.dark .define-word {
+  background: linear-gradient(
+    135deg,
+    #FB923C 0%,
+    #F59E0B 50%,
+    #F59E0B 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #F59E0B;
+  box-shadow:
+    0 0 16px rgba(236, 72, 153, 0.35),
+    0 0 32px rgba(236, 72, 153, 0.28);
+  text-shadow:
+    0 0 8px rgba(236, 72, 153, 0.35);
+  transition: all 0.4s ease-out;
+}
+
+/* Markets - Premium purple/indigo premium */
+.markets-word {
+  background: linear-gradient(
+    135deg,
+    #8B5CF6 0%,
+    #6366F1 50%,
+    #A855F7 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #6366F1;
+  box-shadow:
+    0 0 16px rgba(139, 92, 246, 0.25),
+    0 0 32px rgba(139, 92, 246, 0.2);
+  text-shadow:
+    0 0 8px rgba(139, 92, 246, 0.2);
+  transition: all 0.4s ease-out;
+}
+
+.dark .markets-word {
+  background: linear-gradient(
+    135deg,
+    #7C3AED 0%,
+    #A855F7 50%,
+    #4F46E5 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #7C3AED;
+  box-shadow:
+    0 0 16px rgba(124, 58, 237, 0.3),
+    0 0 32px rgba(124, 58, 237, 0.25);
+  text-shadow:
+    0 0 8px rgba(124, 58, 237, 0.3);
+  transition: all 0.4s ease-out;
+}
+
+  .dark .text-gradient-premium {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--text-heading)) 0%,
+      hsl(var(--aurora-1)) 28%,
+      hsl(var(--aurora-2)) 56%,
+      hsl(var(--aurora-3)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shimmer 5s ease-in-out infinite;
+    background-size: 200% auto;
+    text-shadow: 0 0 40px hsl(var(--aurora-2) / 0.15);
+  }
+
+  @keyframes text-shimmer {
+    0%, 100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 200% center;
+    }
+  }
+
+  .text-gradient-aurora {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--aurora-1)) 0%,
+      hsl(var(--aurora-2)) 50%,
+      hsl(var(--aurora-3)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Section Container */
+  .section-container {
+    padding: clamp(3.5rem, 7vw, 8.75rem) 1.5rem;
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .section-container {
+      padding: clamp(4.5rem, 8vw, 10rem) 2rem;
+    }
+  }
+
+  /* Content Max Width */
+  .content-max {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Animation utilities */
+  .animate-in {
+    animation: animateIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-in-delay-100 {
+    animation-delay: 0.1s;
+  }
+
+  .animate-in-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animate-in-delay-300 {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes animateIn {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Focus visible for keyboard navigation */
+  .focus-ring:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
+
+/* ============================================
+   PREMIUM BACKGROUND SYSTEM WITH PERFECT BLENDING
+   ============================================ */
+
+/* Base Background Styles */
+.bg-premium {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* ============================================
+   THEME 1: INDIGO - Premium Tech Authority
+   Used for: Home, Services, Work, About, Contact
+   ============================================ */
+
+.bg-indigo-hero {
+  background-image: url('/backgrounds/indigo/hero-bg.png');
+}
+
+.bg-indigo-section {
+  background-image: url('/backgrounds/indigo/section-bg.png');
+}
+
+.bg-indigo-accent {
+  background-image: url('/backgrounds/indigo/soft-accent-bg.png');
+}
+
+/* Indigo Theme Overlay - Perfect Blend */
+.overlay-indigo {
+  position: relative;
+}
+
+.overlay-indigo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(244, 246, 251, 0.88),
+    rgba(238, 241, 248, 0.94)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dark .overlay-indigo::before {
+  background: linear-gradient(
+    180deg,
+    rgba(5, 8, 22, 0.82),
+    rgba(5, 8, 22, 0.94)
+  );
+}
+
+/* ============================================
+   THEME 2: MINT - Education & Product Inspiration
+   Used for: Products pages, Product detail sections
+   ============================================ */
+
+.bg-mint-hero {
+  background-image: url('/backgrounds/mint/hero-bg.png');
+}
+
+.bg-mint-section {
+  background-image: url('/backgrounds/mint/section-bg.png');
+}
+
+.bg-mint-accent {
+  background-image: url('/backgrounds/mint/soft-accent-bg.png');
+}
+
+/* Mint Theme Overlay - Perfect Blend */
+.overlay-mint {
+  position: relative;
+}
+
+.overlay-mint::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(243, 251, 248, 0.85),
+    rgba(255, 255, 255, 0.92)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dark .overlay-mint::before {
+  background: linear-gradient(
+    180deg,
+    rgba(243, 251, 248, 0.92),
+    rgba(255, 255, 255, 0.96)
+  );
+}
+
+/* ============================================
+   THEME 3: SAND - Creative Learning & Editorial
+   Used for: Insights/Blog, Knowledge pages, Storytelling
+   ============================================ */
+
+.bg-sand-hero {
+  background-image: url('/backgrounds/sand/hero-bg.png');
+}
+
+.bg-sand-section {
+  background-image: url('/backgrounds/sand/section-bg.png');
+}
+
+.bg-sand-accent {
+  background-image: url('/backgrounds/sand/soft-accent-bg.png');
+}
+
+/* Sand Theme Overlay - Perfect Blend */
+.overlay-sand {
+  position: relative;
+}
+
+.overlay-sand::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 249, 241, 0.82),
+    rgba(255, 255, 255, 0.88)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dark .overlay-sand::before {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 249, 241, 0.88),
+    rgba(255, 255, 255, 0.92)
+  );
+}
+
+/* Content positioning above overlays */
+.content-above-overlay {
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Vignette - Cinematic Edge Darkening */
+.section-vignette {
+  position: relative;
+}
+
+.section-vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(15, 23, 42, 0.12) 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+.dark .section-vignette::after {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(5, 8, 22, 0.18) 100%
+  );
+}
+
+/* Legacy support - smooth transition */
+.section-overlay-light {
+  position: relative;
+}
+
+.section-overlay-light::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.88),
+    rgba(255, 255, 255, 0.94)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section-overlay-dark {
+  position: relative;
+}
+
+.section-overlay-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 8, 22, 0.82),
+    rgba(5, 8, 22, 0.94)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   PREMIUM FINISH EFFECTS
+   ============================================ */
+
+/* Premium Glow - Subtle, Cinematic */
+.premium-glow {
+  box-shadow: 0 0 16px 6px hsl(var(--aurora-1) / 0.20);
+}
+
+.premium-glow-lg {
+  box-shadow: 0 0 32px 12px hsl(var(--aurora-1) / 0.25),
+              0 0 48px 16px hsl(var(--aurora-2) / 0.15);
+}
+
+/* Animated Border Glow - Soft */
+.border-glow-animated {
+  position: relative;
+  overflow: hidden;
+}
+
+.border-glow-animated::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    hsl(var(--aurora-1) / 0.35),
+    transparent,
+    hsl(var(--aurora-2) / 0.30),
+    transparent
+  );
+  background-size: 400% 400%;
+  animation: border-glow 4s linear infinite;
+  border-radius: inherit;
+}
+
+@keyframes border-glow {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Shimmer Text Effect - Using Aurora Colors */
+.shimmer-effect {
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    hsl(var(--aurora-1) / 0.45) 40%,
+    transparent 51%,
+    rgba(15, 23, 42, 0.08) 52%,
+    transparent 53%,
+    rgba(15, 23, 42, 0.08) 54%,
+    transparent 55%,
+    rgba(15, 23, 42, 0.08) 56%,
+    transparent 57%,
+    rgba(15, 23, 42, 0.08) 58%,
+    transparent 59%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3.5s infinite linear;
+  animation-delay: 0s;
+}
+
+.dark .shimmer-effect {
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    hsl(var(--aurora-1) / 0.55) 40%,
+    transparent 51%,
+    rgba(229, 231, 235, 0.18) 52%,
+    transparent 53%,
+    rgba(229, 231, 235, 0.18) 54%,
+    transparent 55%,
+    rgba(229, 231, 235, 0.18) 56%,
+    transparent 57%,
+    rgba(229, 231, 235, 0.18) 58%,
+    transparent 59%,
+    transparent 100%
+  );
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Text Color Utilities - WCAG AA Compliant */
+.text-heading {
+  color: var(--text-heading);
+}
+
+.text-body {
+  color: var(--text-body);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-subtle {
+  color: var(--text-subtle);
+}
+
+/* Background Color Utilities */
+.bg-main {
+  background-color: var(--bg-main);
+}
+
+.bg-alt {
+  background-color: var(--bg-alt);
+}
+
+.bg-soft {
+  background-color: var(--bg-soft);
+}
+
+/*  */
+/* Gllow text word by word END */
+/*  */
+
+#glowing_text {
+  text-wrap: nowrap;
+  text-overflow: clip;
+}
+
+#glowing_text span {
+  color: #818590;
+  text-shadow: none;
+  transition:
+    color 0.8s ease-in-out,
+    text-shadow 0.8s ease-in-out;
+}
+
+#glowing_text span.glow {
+  color: #e0e0dc;
+  text-shadow: 0 0 0.3em rgb(0, 229, 215);
+}
+
+/* Gllow text word by word END */
