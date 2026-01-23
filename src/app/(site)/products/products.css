@@ -1,0 +1,306 @@
+[data-page="products"] {
+  --prd-bg: #fff7fc;
+  --prd-bg-alt: #fdecf7;
+  --prd-card: #ffffff;
+  --prd-border: #f2cbe7;
+  --prd-text: #2a0622;
+  --prd-muted: #6e3a63;
+
+  /* Brand accents */
+  --prd-primary: #8b0376;
+  --prd-primary-2: #8b0376;
+  --prd-accent: #e84ecf;
+  --prd-accent-2: #ff7ad9;
+  --prd-highlight: #ffd6f3;
+}
+
+/* DARK MODE TOKENS */
+.dark [data-page="products"] {
+  --prd-bg: #0a0210;
+  --prd-bg-alt: #12041d;
+  --prd-card: rgba(255, 255, 255, 0.06);
+  --prd-border: rgba(196, 4, 164, 0.28);
+  --prd-text: #f5e9f4;
+  --prd-muted: #c6a3c1;
+
+  /* Brand accents */
+  --prd-primary: #8b0376;
+  --prd-primary-2: #ff7ad9;
+  --prd-accent: #e84ecf;
+  --prd-accent-2: #8b0376;
+  --prd-highlight: rgba(255, 214, 243, 0.1);
+}
+
+/* ========================================
+   PAGE BACKGROUND
+   ======================================== */
+[data-page="products"] {
+  background: var(--prd-bg);
+}
+
+/* Light mode soft gradient wash */
+[data-page="products"]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(
+      1200px 600px at 15% 10%,
+      rgba(196, 4, 164, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      1000px 500px at 85% 30%,
+      rgba(232, 78, 207, 0.1),
+      transparent 55%
+    );
+}
+
+.dark [data-page="products"]::before {
+  background:
+    radial-gradient(
+      1200px 600px at 15% 10%,
+      rgba(196, 4, 164, 0.14),
+      transparent 60%
+    ),
+    radial-gradient(
+      1000px 500px at 85% 30%,
+      rgba(255, 122, 217, 0.1),
+      transparent 55%
+    );
+}
+
+/* ========================================
+   HERO IMAGE LAYERS
+   ======================================== */
+[data-page="products"] .prd-hero-image-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Light mode overlay */
+/* [data-page="products"] .prd-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 247, 252, 0.84),
+    rgba(255, 247, 252, 0.6)
+  );
+} */
+
+.dark [data-page="products"] .prd-hero-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 2, 16, 0.86),
+    rgba(10, 2, 16, 0.64)
+  );
+}
+
+.product-hero-bg {
+  background: url("../../../../public/products/product-bg.png");
+
+  background-position: center;
+  background-size: cover;
+}
+
+/* ========================================
+   SECTION BACKGROUND LAYERS
+   ======================================== */
+[data-page="products"] .prd-section-image-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+[data-page="products"] .prd-section-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* ========================================
+   GRADIENT TEXT
+   ======================================== */
+[data-page="products"] .prd-gradient-text {
+  background: linear-gradient(90deg, #600bff, #4e0dff, #b412ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================
+   ECOSYSTEM STRIP
+   ======================================== */
+[data-page="products"] .prd-ecosystem-separator {
+  color: var(--prd-primary);
+  opacity: 0.4;
+}
+
+/* ========================================
+   FILTERS - SEGMENTED CONTROL
+   ======================================== */
+[data-page="products"] .prd-filter-container {
+  background: var(--prd-bg-alt);
+  border: 1px solid var(--prd-border);
+}
+
+[data-page="products"] .prd-filter-btn {
+  color: var(--prd-muted);
+  transition: color 0.3s ease;
+}
+
+[data-page="products"] .prd-filter-btn:hover {
+  color: var(--prd-text);
+}
+
+[data-page="products"] .prd-filter-btn.active {
+  color: var(--prd-text);
+}
+
+[data-page="products"] .prd-filter-indicator {
+  background: var(--prd-highlight);
+  border: 1px solid var(--prd-border);
+}
+
+/* ========================================
+   PRODUCT CARD
+   ======================================== */
+[data-page="products"] .prd-card {
+  background: var(--prd-card);
+  border: 1px solid var(--prd-border);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+[data-page="products"] .prd-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    ellipse at top left,
+    rgba(196, 4, 164, 0.06) 0%,
+    rgba(232, 78, 207, 0.03) 40%,
+    transparent 70%
+  );
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Card hover effects (desktop only) */
+@media (hover: hover) {
+  [data-page="products"] .prd-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -12px rgba(196, 4, 164, 0.15);
+    border-color: rgba(196, 4, 164, 0.4);
+  }
+
+  [data-page="products"] .prd-card:hover::before {
+    background: radial-gradient(
+      ellipse at top left,
+      rgba(196, 4, 164, 0.12) 0%,
+      rgba(232, 78, 207, 0.06) 40%,
+      transparent 70%
+    );
+    opacity: 1;
+  }
+}
+
+/* Card focus ring */
+[data-page="products"] .prd-card:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--prd-bg),
+    0 0 0 4px var(--prd-primary);
+}
+
+/* Card content z-index */
+[data-page="products"] .prd-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Status badges */
+[data-page="products"] .prd-status-live {
+  background: rgba(196, 4, 164, 0.1);
+  color: var(--prd-primary);
+  border: 1px solid rgba(196, 4, 164, 0.2);
+}
+
+[data-page="products"] .prd-status-beta {
+  background: rgba(232, 78, 207, 0.1);
+  color: var(--prd-accent);
+  border: 1px solid rgba(232, 78, 207, 0.2);
+}
+
+[data-page="products"] .prd-status-coming-soon {
+  background: var(--prd-bg-alt);
+  color: var(--prd-muted);
+  border: 1px solid var(--prd-border);
+}
+
+/* Tag pills */
+[data-page="products"] .prd-tag-pill {
+  background: var(--prd-bg-alt);
+  color: var(--prd-muted);
+}
+
+/* Card CTA arrow hover */
+[data-page="products"] .prd-card-cta-arrow {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  [data-page="products"] .prd-card:hover .prd-card-cta-arrow {
+    transform: translateX(6px);
+  }
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+[data-page="products"] .prd-cta-gradient-border {
+  background: var(--prd-bg-alt);
+  position: relative;
+}
+
+[data-page="products"] .prd-cta-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(90deg, #7704c4, #a27aff);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+@media (max-width: 768px) {
+  [data-page="products"] .prd-ecosystem-strip {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

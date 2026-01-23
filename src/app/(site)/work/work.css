@@ -1,0 +1,192 @@
+/* LIGHT MODE */
+[data-page="work"] {
+  --wrk-bg: #faf8ff;
+  --wrk-bg-alt: #f2eeff;
+  --wrk-card: #ffffff;
+  --wrk-border: #e3d9f2;
+
+  --wrk-text: #120b1d;
+  --wrk-muted: #4d3a62;
+
+  /* Brand tones */
+  --wrk-primary: #44196a;
+  --wrk-secondary: #6d28d9;
+  --wrk-accent: #a855f7;
+  --wrk-highlight: #e9d5ff;
+
+  background: var(--wrk-bg);
+}
+
+/* Light mode background layers */
+[data-page="work"]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(
+      1000px 650px at 15% 15%,
+      rgba(68, 25, 106, 0.1),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 600px at 85% 30%,
+      rgba(168, 85, 247, 0.1),
+      transparent 55%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Hero image layer placeholder */
+[data-page="work"] .heroImageLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+/* Hero overlay gradient - Light mode */
+[data-page="work"] .heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 248, 255, 0.86),
+    rgba(250, 248, 255, 0.68)
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Section image layer placeholder */
+[data-page="work"] .sectionImageLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+/* Section overlay gradient - Light mode */
+[data-page="work"] .sectionOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 248, 255, 0.86),
+    rgba(250, 248, 255, 0.68)
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* DARK MODE */
+@media (prefers-color-scheme: dark) {
+  [data-page="work"] {
+    --wrk-bg: #07020d;
+    --wrk-bg-alt: #0d0516;
+    --wrk-card: rgba(255, 255, 255, 0.06);
+    --wrk-border: rgba(255, 255, 255, 0.12);
+
+    --wrk-text: #f4ecff;
+    --wrk-muted: #c9b4e6;
+
+    /* Brand tones */
+    --wrk-primary: #a855f7;
+    --wrk-secondary: #7c3aed;
+    --wrk-accent: #c084fc;
+    --wrk-highlight: rgba(233, 213, 255, 0.14);
+  }
+
+  /* Dark mode background layers */
+  [data-page="work"]::before {
+    background:
+      radial-gradient(
+        1000px 650px at 15% 15%,
+        rgba(168, 85, 247, 0.14),
+        transparent 60%
+      ),
+      radial-gradient(
+        900px 600px at 85% 30%,
+        rgba(192, 132, 252, 0.1),
+        transparent 55%
+      );
+  }
+
+  /* Hero overlay gradient - Dark mode */
+  [data-page="work"] .heroOverlay {
+    background: linear-gradient(
+      180deg,
+      rgba(7, 2, 13, 0.88),
+      rgba(7, 2, 13, 0.66)
+    );
+  }
+
+  /* Section overlay gradient - Dark mode */
+  [data-page="work"] .sectionOverlay {
+    background: linear-gradient(
+      180deg,
+      rgba(7, 2, 13, 0.88),
+      rgba(7, 2, 13, 0.66)
+    );
+  }
+}
+
+/* Dark mode class support */
+.dark [data-page="work"] {
+  --wrk-bg: #07020d;
+  --wrk-bg-alt: #0d0516;
+  --wrk-card: rgba(255, 255, 255, 0.06);
+  --wrk-border: rgba(255, 255, 255, 0.12);
+
+  --wrk-text: #f4ecff;
+  --wrk-muted: #c9b4e6;
+
+  /* Brand tones */
+  --wrk-primary: #a855f7;
+  --wrk-secondary: #7c3aed;
+  --wrk-accent: #c084fc;
+  --wrk-highlight: rgba(233, 213, 255, 0.14);
+}
+
+.dark [data-page="work"]::before {
+  background:
+    radial-gradient(
+      1000px 650px at 15% 15%,
+      rgba(168, 85, 247, 0.14),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 600px at 85% 30%,
+      rgba(192, 132, 252, 0.1),
+      transparent 55%
+    );
+}
+
+.dark [data-page="work"] .heroOverlay {
+  background: linear-gradient(
+    180deg,
+    rgba(7, 2, 13, 0.88),
+    rgba(7, 2, 13, 0.66)
+  );
+}
+
+.dark [data-page="work"] .sectionOverlay {
+  background: linear-gradient(
+    180deg,
+    rgba(7, 2, 13, 0.88),
+    rgba(7, 2, 13, 0.66)
+  );
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-page="work"] * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

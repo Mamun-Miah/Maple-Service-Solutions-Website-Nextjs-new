@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { CheckCircle2, Sparkles, Zap } from "lucide-react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { CheckCircle2, Sparkles, Zap } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export interface TimelineItem {
-  title: string
-  description: string
-  icon?: React.ReactNode
+  title: string;
+  description: string;
+  icon?: React.ReactNode;
 }
 
 export interface TimelineProps {
-  items: TimelineItem[]
-  className?: string
+  items: TimelineItem[];
+  className?: string;
 }
 
 export function Timeline({ items, className }: TimelineProps) {
-  const { scrollYProgress } = useScroll()
+  const { scrollYProgress } = useScroll();
 
   return (
     <div className={cn("relative", className)}>
@@ -51,16 +51,17 @@ export function Timeline({ items, className }: TimelineProps) {
                   className="absolute inset-0 rounded-full"
                   animate={{
                     rotate: 360,
-                  scale: [1, 1.2, 1],
-                  opacity: [0.5, 1, 0.5],
-                  transition: {
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  },
-                }}
+                    scale: [1, 1.2, 1],
+                    opacity: [0.5, 1, 0.5],
+                    transition: {
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                    },
+                  }}
                   style={{
-                    background: "conic-gradient(from-transparent, via-accent-secondary/20, to-transparent)",
+                    background:
+                      "conic-gradient(from-transparent, via-accent-secondary/20, to-transparent)",
                   }}
                 />
                 <div className="relative z-10">
@@ -92,7 +93,8 @@ export function Timeline({ items, className }: TimelineProps) {
                     },
                   }}
                   style={{
-                    background: "conic-gradient(from-transparent 10deg, via-accent-secondary/30 30deg, transparent 50%, transparent 80deg, via-accent-secondary/30 130deg, transparent)",
+                    background:
+                      "conic-gradient(from-transparent 10deg, via-accent-secondary/30 30deg, transparent 50%, transparent 80deg, via-accent-secondary/30 130deg, transparent)",
                   }}
                 />
               </motion.div>
@@ -127,7 +129,7 @@ export function Timeline({ items, className }: TimelineProps) {
                 whileInView={{ opacity: 0.3, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-                className="text-7xl font-bold text-muted-foreground/10"
+                className="text-7xl font-bold text-muted-foreground/40"
               >
                 0{index + 1}
               </motion.div>
@@ -136,5 +138,5 @@ export function Timeline({ items, className }: TimelineProps) {
         ))}
       </div>
     </div>
-  )
+  );
 }

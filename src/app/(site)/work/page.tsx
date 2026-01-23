@@ -1,91 +1,112 @@
-import { caseStudies } from "@/content/work"
-import { CaseStudyCard } from "@/components/cards/case-study-card"
-import { SectionHeader } from "@/components/components/section-header"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { TrendingUp } from "lucide-react"
+"use client";
 
-export const metadata = {
-  title: "Work",
-  description: "Explore our portfolio of case studies showing how we've helped businesses transform and grow.",
-}
+import * as React from "react";
+import { motion } from "framer-motion";
+import { caseStudies, categories, impactMetrics } from "@/content/work";
+import { CaseStudyCard } from "@/components/work/case-study-card";
+import { WorkFilters } from "@/components/work/work-filters";
+import { ImpactKPIGrid } from "@/components/work/impact-kpi-grid";
+import { WorkHero } from "@/components/work/work-hero";
+import { WorkCTA } from "@/components/work/work-cta";
+import "./work.css";
 
-const categories = ["All", "FinTech", "HealthTech", "Retail & Commerce", "SaaS"]
+// Motion variants
+const containerStagger = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const cardIn = {
+  hidden: { opacity: 0, y: 18, scale: 0.98, filter: "blur(10px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 export default function WorkPage() {
+  const [activeCategory, setActiveCategory] = React.useState("All");
+
+  const filteredCaseStudies = React.useMemo(() => {
+    if (activeCategory === "All") return caseStudies;
+    return caseStudies.filter((study) => study.category === activeCategory);
+  }, [activeCategory]);
+
   return (
-    <div className="section-container bg-premium bg-indigo-hero overlay-indigo content-above-overlay">
-      <div className="content-max">
-        <SectionHeader
-          badge="Our Work"
-          title="Featured Case Studies"
-          description="Real impact, real results. See how we've helped businesses transform."
+    <main data-page="work" className="relative overflow-hidden min-h-screen">
+      {/* Hero Section */}
+      <section className="mx-auto max-w-7xl px-6 md:px-8 py-16 relative z-10">
+        <WorkHero />
+      </section>
+
+      {/* Filters Section */}
+      <section className="mx-auto max-w-7xl px-6 md:px-8 pb-8 relative z-10">
+        <WorkFilters
+          categories={categories}
+          activeCategory={activeCategory}
+          onCategoryChange={setActiveCategory}
         />
+      </section>
 
-        {/* Category Filters */}
-        <div className="mb-12 flex flex-wrap gap-2">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant="outline"
-              size="sm"
-              className="rounded-full"
-            >
-              {category}
-            </Button>
+      {/* Case Study Grid Section */}
+      <section className="mx-auto max-w-7xl px-6 md:px-8 pb-16 relative z-10">
+        <motion.div
+          variants={containerStagger}
+          initial="hidden"
+          animate="visible"
+          key={activeCategory}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {filteredCaseStudies.map((caseStudy) => (
+            <motion.div key={caseStudy.id} variants={cardIn}>
+              <CaseStudyCard
+                title={caseStudy.title}
+                category={caseStudy.category}
+                description={caseStudy.summary}
+                metrics={caseStudy.impact}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Case Studies Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {caseStudies.map((caseStudy) => (
-            <CaseStudyCard
-              key={caseStudy.id}
-              title={caseStudy.title}
-              category={caseStudy.category}
-              description={caseStudy.summary}
-              metrics={caseStudy.impact}
-            />
-          ))}
-        </div>
-
-        {/* Impact Summary */}
-        <div className="aurora-gradient-subtle rounded-3xl p-8 md:p-12">
-          <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-            Our Impact by the Numbers
-          </h3>
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { label: "Client Satisfaction", value: "98%" },
-              { label: "On-Time Delivery", value: "95%" },
-              { label: "Average ROI", value: "3.5x" },
-              { label: "Long-term Partnerships", value: "85%" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+        {filteredCaseStudies.length === 0 && (
+          <div className="text-center py-16">
+            <p className="text-[--wrk-muted] text-lg">
+              No case studies found for this category.
+            </p>
           </div>
+        )}
+      </section>
+
+      {/* Impact By The Numbers Section */}
+      <section className="mx-auto max-w-7xl px-6 md:px-8 pb-16 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-[--wrk-text] mb-4">
+            Our Impact by the Numbers
+          </h2>
+          <p className="text-[--wrk-muted] text-lg max-w-2xl mx-auto">
+            Measurable results that demonstrate our commitment to excellence
+          </p>
         </div>
 
-        {/* CTA Section */}
-        <div className="mt-16 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Be Our Next Success Story?
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Let's discuss how we can help transform your business.
-          </p>
-          <Button size="lg">
-            Start a Project
-          </Button>
-        </div>
-      </div>
-    </div>
-  )
+        <ImpactKPIGrid metrics={impactMetrics} />
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="mx-auto max-w-7xl px-6 md:px-8 pb-20 relative z-10">
+        <WorkCTA />
+      </section>
+    </main>
+  );
 }

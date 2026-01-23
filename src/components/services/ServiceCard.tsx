@@ -1,124 +1,103 @@
-'use client'
+"use client";
 
-import { motion, useInView, useReducedMotion } from 'framer-motion'
-import { useRef } from 'react'
-import { cn } from '@/lib/utils'
-import { ArrowRight } from 'lucide-react'
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-// Premium easing curves
-const EASE_CINEMATIC = [0.16, 1, 0.3, 1]
-const EASE_LUXURY = [0.22, 1, 0.36, 1]
+const EASE_OUT = [0.22, 1, 0.36, 1];
 
-interface ServiceCardProps {
-  title: string
-  description: string
-  icon: React.ReactNode
-  features: string[]
-  index?: number
-}
-
-/**
- * ServiceCard - "Precision Drop" Animation
- *
- * Cards do not "slide up" like homepage. Different signature:
- * - initial: opacity 0, y 0 but clipPath inset(0 0 100% 0)
- * - animate: clip opens upward + subtle blur clears
- * - hover: micro tilt (1-2deg) + border specular highlight
- */
 export function ServiceCard({
   title,
   description,
   icon,
   features,
-  index = 0
-}: ServiceCardProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
-  const prefersReducedMotion = useReducedMotion()
+  index = 0,
+}: {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  features: string[];
+  index?: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const reduced = useReducedMotion();
 
   return (
     <motion.div
       ref={ref}
       initial={{
         opacity: 0,
-        y: 0,
-        filter: prefersReducedMotion ? 'blur(0px)' : 'blur(8px)',
-        clipPath: prefersReducedMotion ? 'inset(0 0 0 0)' : 'inset(0 0 100% 0)'
+        y: 40,
+        filter: reduced ? "none" : "blur(6px)",
       }}
-      animate={isInView ? {
-        opacity: 1,
-        y: 0,
-        filter: 'blur(0px)',
-        clipPath: 'inset(0 0 0 0)'
-      } : undefined}
+      animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : undefined}
       transition={{
-        duration: 0.72,
-        ease: EASE_CINEMATIC,
-        delay: prefersReducedMotion ? 0 : index * 0.1
+        duration: 0.8,
+        delay: index * 0.12,
+        ease: EASE_OUT,
       }}
       whileHover={{
-        rotateX: 1,
-        rotateY: 2,
-        scale: 1.01,
-        transition: { duration: 0.4, ease: EASE_LUXURY }
+        y: -6,
+        rotateX: 4,
+        rotateY: -4,
+        scale: 1.03,
       }}
+      style={{ perspective: 1200 }}
       className={cn(
-        'relative z-50 rounded-2xl p-6 border',
-        'bg-[var(--svc-card)] border-[var(--svc-border)]',
-        'cursor-pointer transition-all duration-500'
+        "relative h-full rounded-2xl p-6",
+        "bg-white/80 dark:bg-neutral-900/70 backdrop-blur-xl",
+        "border border-black/5 dark:border-white/10",
+        "shadow-lg shadow-black/5 dark:shadow-black/30",
+        "transition-all duration-300",
       )}
     >
-      {/* Border Specular Highlight on Hover */}
-      <motion.div
-        className="absolute inset-0 rounded-2xl pointer-events-none"
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
-        transition={{ duration: 0.3, ease: EASE_LUXURY }}
-      >
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--svc-primary)]/10 to-[var(--svc-secondary)]/10 blur-md -z-10" />
-      </motion.div>
+      {/* Glow (dark mode magic) */}
+      <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition">
+        <div
+          className="absolute inset-0 rounded-2xl 
+          bg-gradient-to-br from-indigo-500/20 via-purple-500/10 to-cyan-500/20
+          blur-xl"
+        />
+      </div>
 
-      {/* Card Content */}
-      <div className="relative z-10 space-y-4">
-        {/* Icon + Title */}
-        <div className="flex items-start gap-4">
-          <div className="p-3 rounded-xl bg-[var(--svc-tint)] text-[var(--svc-primary)]">
-            {icon}
-          </div>
-          <h3 className="text-xl font-semibold text-[var(--svc-text)] flex-1">
-            {title}
-          </h3>
+      {/* Content */}
+      <div className="relative z-10 space-y-5">
+        {/* Icon */}
+        <div className="inline-flex rounded-xl bg-indigo-500/10 p-3 text-indigo-600 dark:text-indigo-400">
+          {icon}
         </div>
 
+        {/* Title */}
+        <h3 className="text-xl font-semibold text-neutral-900 dark:text-white">
+          {title}
+        </h3>
+
         {/* Description */}
-        <p className="text-[var(--svc-muted)] leading-relaxed">
+        <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
           {description}
         </p>
 
         {/* Features */}
         <ul className="space-y-2">
-          {features.map((feature, i) => (
+          {features.map((f, i) => (
             <li
               key={i}
-              className="flex items-center gap-2 text-sm text-[var(--svc-muted)]"
+              className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400"
             >
-              <div className="h-1.5 w-1.5 rounded-full bg-[var(--svc-primary)]" />
-              {feature}
+              <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
+              {f}
             </li>
           ))}
         </ul>
 
-        {/* Learn More Link */}
-        <div className="flex items-center gap-2 text-[var(--svc-primary)] text-sm font-semibold group mt-6">
-          <span className="group-hover:underline underline-offset-2 decoration-2">Learn more</span>
-          <motion.div
-            whileHover={{ x: 4 }}
-            transition={{ duration: 0.28, ease: EASE_LUXURY }}
-          >
-            <ArrowRight className="h-4 w-4" />
-          </motion.div>
+        {/* CTA */}
+        <div className="flex items-center gap-2 pt-4 text-sm font-semibold text-indigo-600 dark:text-indigo-400">
+          Learn more
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </div>
       </div>
     </motion.div>
-  )
+  );
 }

@@ -1,20 +1,38 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ArrowRight, Globe, Zap, Award, Target, Lightbulb, Rocket, TrendingUp, CheckCircle2, ArrowUpRight, MessageCircle, Calendar, ChevronDown, Sparkles } from "lucide-react"
-import { motion } from "framer-motion"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { SectionHeader } from "@/components/components/section-header"
-import { ProductCard } from "@/components/cards/product-card"
-import { ServiceCard } from "@/components/cards/service-card"
-import { CaseStudyCard } from "@/components/cards/case-study-card"
-import { StatsRow } from "@/components/layout/stats-row"
-import { Timeline } from "@/components/layout/timeline"
-import { ShimmerText } from "@/components/components/shimmer-text"
-import { ScrollReveal, StaggerReveal } from "@/components/components/scroll-reveal"
-import { initGlowingText } from "@/jsanimation/glow-text"
+import Link from "next/link";
+import {
+  ArrowRight,
+  Globe,
+  Zap,
+  Award,
+  Target,
+  Lightbulb,
+  Rocket,
+  TrendingUp,
+  CheckCircle2,
+  ArrowUpRight,
+  MessageCircle,
+  Calendar,
+  ChevronDown,
+  Sparkles,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { SectionHeader } from "@/components/components/section-header";
+import { ProductCard } from "@/components/cards/product-card";
+import { ServiceCard } from "@/components/cards/service-card";
+import { CaseStudyCard } from "@/components/cards/case-study-card";
+import { StatsRow } from "@/components/layout/stats-row";
+import { Timeline } from "@/components/layout/timeline";
+import { ShimmerText } from "@/components/components/shimmer-text";
+import {
+  ScrollReveal,
+  StaggerReveal,
+} from "@/components/components/scroll-reveal";
+import { initGlowingText } from "@/jsanimation/glow-text";
 import { ReactNode } from "react";
 interface PulseRevealProps {
   children: ReactNode;
@@ -37,13 +55,28 @@ import {
   Expansion,
   Arrival,
   CinematicLift,
-} from "@/components/components/advanced-animations"
-import { products } from "@/content/products"
-import { services } from "@/content/services"
-import { caseStudies } from "@/content/work"
-import { industries } from "@/content/industries"
-import { Database, Server, Layout, Bot, BarChart3, Code, Palette, Cpu, ShoppingBag, Truck, Building, GraduationCap, HeartPulse, Wallet } from "lucide-react"
-import { useEffect } from "react"
+} from "@/components/components/advanced-animations";
+import { products } from "@/content/products";
+import { services } from "@/content/services";
+import { caseStudies } from "@/content/work";
+import { industries } from "@/content/industries";
+import {
+  Database,
+  Server,
+  Layout,
+  Bot,
+  BarChart3,
+  Code,
+  Palette,
+  Cpu,
+  ShoppingBag,
+  Truck,
+  Building,
+  GraduationCap,
+  HeartPulse,
+  Wallet,
+} from "lucide-react";
+import { useEffect } from "react";
 
 export default function HomePage() {
   useEffect(() => {
@@ -58,15 +91,29 @@ export default function HomePage() {
     gov: Building,
     saas: Rocket,
     enterprise: Server,
-  }
+  };
 
   return (
     <>
       {/* ========================================
           SECTION A - Hero (Cinematic)
           ======================================== */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-premium bg-indigo-hero overlay-indigo section-vignette">
 
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-premium bg-indigo-hero overlay-indigo section-vignette">
+        <video
+          className="
+      absolute inset-0
+      h-full w-full
+      object-cover
+    "
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/videos/hero-poster.jpg"
+        >
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
         <div className="relative z-10 content-max w-full section-container text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -74,16 +121,19 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
           >
             {/* <PulseReveal delay={0.2} wordDelay={0.12}> */}
-              <div className="hero-section-head">
-                    <p id="glowing_text">AI · Platforms · Design · Engineering</p>
-                  </div>
+            <div className="hero-section-head">
+              <p id="glowing_text">AI · Platforms · Design · Engineering</p>
+            </div>
             {/* </PulseReveal> */}
 
             <h1 className="text-heading text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
               <ConstructiveIntelligence />
             </h1>
 
-            <FlowLineReveal delay={0.8} className="text-xl md:text-2xl text-body max-w-3xl mx-auto mb-10 leading-relaxed">
+            <FlowLineReveal
+              delay={0.8}
+              className="text-xl md:text-2xl text-body max-w-3xl mx-auto mb-10 leading-relaxed"
+            >
               AI. Platforms. Design. Engineering. Growth — under one system.
             </FlowLineReveal>
 
@@ -159,38 +209,44 @@ export default function HomePage() {
                 {
                   icon: <Bot className="h-6 w-6" />,
                   title: "Product Company",
-                  description: "We build our own products, solving real problems at scale.",
+                  description:
+                    "We build our own products, solving real problems at scale.",
                   link: "/products",
                 },
                 {
                   icon: <Cpu className="h-6 w-6" />,
                   title: "AI & Systems Builder",
-                  description: "We harness AI to create intelligent, automated systems.",
+                  description:
+                    "We harness AI to create intelligent, automated systems.",
                   link: "/services",
                 },
                 {
                   icon: <Globe className="h-6 w-6" />,
                   title: "Premium Global Studio",
-                  description: "Bangladesh-born, world-class design and engineering.",
+                  description:
+                    "Bangladesh-born, world-class design and engineering.",
                   link: "/about",
                 },
               ].map((card, index) => (
                 <LiftOnAwareness key={index} delay={index * 0.15}>
-                    <Link href={card.link} className="block h-full">
-                      <div className="glass card-hover p-6 rounded-2xl h-full group">
-                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-primary mb-4">
-                          {card.icon}
-                        </div>
-                        <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-                        <p className="text-muted-foreground mb-4">{card.description}</p>
-                        <div className="flex items-center text-sm font-medium text-primary">
-                          Learn more
-                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </div>
+                  <Link href={card.link} className="block h-full">
+                    <div className="glass card-hover p-6 rounded-2xl h-full group">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-primary mb-4">
+                        {card.icon}
                       </div>
-                    </Link>
-                  </LiftOnAwareness>
-
+                      <h3 className="text-xl font-semibold mb-2">
+                        {card.title}
+                      </h3>
+                      <p className="text-muted-foreground mb-4">
+                        {card.description}
+                      </p>
+                      <div className="flex items-center text-sm font-medium text-primary">
+                        Learn more
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </div>
+                    </div>
+                  </Link>
+                </LiftOnAwareness>
               ))}
             </div>
           </div>
@@ -253,14 +309,20 @@ export default function HomePage() {
               <div className="lg:sticky lg:top-32 h-fit">
                 <SectionHeader
                   badge="Our Services"
-                  title={<SplitWordReveal>What We Build for Clients</SplitWordReveal>}
+                  title={
+                    <SplitWordReveal>What We Build for Clients</SplitWordReveal>
+                  }
                   description="End-to-end capabilities from strategy to execution."
                 />
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 {services.map((service, index) => (
-                  <SequentialIntelligence key={service.id} index={index} staggerDelay={0.08}>
+                  <SequentialIntelligence
+                    key={service.id}
+                    index={index}
+                    staggerDelay={0.08}
+                  >
                     <ServiceCard
                       title={service.name}
                       description={service.tagline}
@@ -290,19 +352,23 @@ export default function HomePage() {
             items={[
               {
                 title: "Think",
-                description: "We start with deep understanding. Research, strategy, and clear objectives lay the foundation for success.",
+                description:
+                  "We start with deep understanding. Research, strategy, and clear objectives lay the foundation for success.",
               },
               {
                 title: "Design",
-                description: "Great design solves problems. We create intuitive, beautiful experiences that users love.",
+                description:
+                  "Great design solves problems. We create intuitive, beautiful experiences that users love.",
               },
               {
                 title: "Build",
-                description: "Clean code, modern architecture. We engineer for scale, security, and maintainability.",
+                description:
+                  "Clean code, modern architecture. We engineer for scale, security, and maintainability.",
               },
               {
                 title: "Scale",
-                description: "Launch is just the beginning. We optimize, iterate, and help you grow sustainably.",
+                description:
+                  "Launch is just the beginning. We optimize, iterate, and help you grow sustainably.",
               },
             ]}
             className="max-w-4xl mx-auto"
@@ -364,22 +430,26 @@ export default function HomePage() {
                 {
                   icon: <Target className="h-6 w-6" />,
                   title: "Results-Driven",
-                  description: "We focus on outcomes, not output. Every decision tied to your goals.",
+                  description:
+                    "We focus on outcomes, not output. Every decision tied to your goals.",
                 },
                 {
                   icon: <Lightbulb className="h-6 w-6" />,
                   title: "Innovation First",
-                  description: "We stay ahead of trends, bringing cutting-edge solutions to every project.",
+                  description:
+                    "We stay ahead of trends, bringing cutting-edge solutions to every project.",
                 },
                 {
                   icon: <Award className="h-6 w-6" />,
                   title: "Quality Obsessed",
-                  description: "Premium quality in everything we do. Good enough is never good enough.",
+                  description:
+                    "Premium quality in everything we do. Good enough is never good enough.",
                 },
                 {
                   icon: <TrendingUp className="h-6 w-6" />,
                   title: "Growth Partner",
-                  description: "We're in it for the long haul. Your success is our success.",
+                  description:
+                    "We're in it for the long haul. Your success is our success.",
                 },
               ].map((item, index) => (
                 <LiftOnAwareness key={index} delay={index * 0.12}>
@@ -388,7 +458,9 @@ export default function HomePage() {
                       {item.icon}
                     </div>
                     <h3 className="font-semibold mb-2">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {item.description}
+                    </p>
                   </div>
                 </LiftOnAwareness>
               ))}
@@ -398,14 +470,18 @@ export default function HomePage() {
             <ScrollReveal delay={0.4}>
               <ConfidenceReveal slow={true}>
                 <div className="aurora-gradient-subtle glass-strong rounded-3xl p-8 md:p-12 text-center">
-                  <h3 className="text-heading text-3xl md:text-4xl font-bold mb-4">The Maple Promise</h3>
+                  <h3 className="text-heading text-3xl md:text-4xl font-bold mb-4">
+                    The Maple Promise
+                  </h3>
                   <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16">
                     {["Clarity", "Craft", "Scale"].map((item, index) => (
                       <div key={index} className="text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-heading text-gradient-premium mb-2">
+                        <div className="text-4xl md:text-5xl font-bold text-gray-500 mb-2">
                           0{index + 1}
                         </div>
-                        <div className="text-lg font-semibold text-heading">{item}</div>
+                        <div className="text-lg font-semibold text-heading">
+                          {item}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -438,7 +514,7 @@ export default function HomePage() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               {industries.map((industry, index) => {
-                const Icon = industryIcons[industry.id] || Globe
+                const Icon = industryIcons[industry.id] || Globe;
                 return (
                   <LiftOnAwareness key={industry.id} delay={index * 0.08}>
                     <Link href={`/industries/${industry.slug}`}>
@@ -451,7 +527,7 @@ export default function HomePage() {
                       </div>
                     </Link>
                   </LiftOnAwareness>
-                )
+                );
               })}
             </div>
           </div>
@@ -469,16 +545,25 @@ export default function HomePage() {
                 <div>
                   <SectionHeader
                     badge="Our Story"
-                    title={<Expansion center={true}>From Bangladesh to World</Expansion>}
+                    title={
+                      <Expansion center={true}>
+                        From Bangladesh to World
+                      </Expansion>
+                    }
                     description="We're building world-class products from Bangladesh, proving that great technology can come from anywhere."
                   />
 
                   <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                    Founded with a vision to transform how products are built in Bangladesh, Maple has grown into a global technology company. We combine local talent with global standards, delivering products that compete on the world stage.
+                    Founded with a vision to transform how products are built in
+                    Bangladesh, Maple has grown into a global technology
+                    company. We combine local talent with global standards,
+                    delivering products that compete on the world stage.
                   </p>
 
                   <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                    Our journey is just beginning. We're committed to putting Bangladesh on the map as a hub for innovation, one exceptional product at a time.
+                    Our journey is just beginning. We're committed to putting
+                    Bangladesh on the map as a hub for innovation, one
+                    exceptional product at a time.
                   </p>
 
                   <Link href="/about">
@@ -524,7 +609,8 @@ export default function HomePage() {
                 </h2>
 
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-                  Ready to turn your vision into reality? Let's talk about your next project.
+                  Ready to turn your vision into reality? Let's talk about your
+                  next project.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -555,7 +641,7 @@ export default function HomePage() {
                   <form
                     className="space-y-4 text-left"
                     onSubmit={(e) => {
-                      e.preventDefault()
+                      e.preventDefault();
                       // TODO: Implement form submission
                     }}
                   >
@@ -577,5 +663,5 @@ export default function HomePage() {
         </div>
       </section>
     </>
-  )
+  );
 }

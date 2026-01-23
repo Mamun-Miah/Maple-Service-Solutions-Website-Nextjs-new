@@ -1,26 +1,27 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { SectionHeader } from "@/components/components/section-header"
-import { Badge } from "@/components/ui/badge"
-import { Mail, MessageCircle, Calendar, CheckCircle2, Send } from "lucide-react"
-import { toast } from "sonner"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { SectionHeader } from "@/components/components/section-header";
+import { Badge } from "@/components/ui/badge";
+import {
+  Mail,
+  MessageCircle,
+  Calendar,
+  CheckCircle2,
+  Send,
+} from "lucide-react";
+import { toast } from "sonner";
 
-export const metadata = {
-  title: "Contact",
-  description: "Get in touch with Maple Service Solution. Let's discuss your next project.",
-}
+// export const metadata = {
+//   title: "Contact",
+//   description: "Get in touch with Maple Service Solution. Let's discuss your next project.",
+// }
 
-const budgetRanges = [
-  "$5k - $15k",
-  "$15k - $50k",
-  "$50k - $100k",
-  "$100k+",
-]
+const budgetRanges = ["$5k - $15k", "$15k - $50k", "$50k - $100k", "$100k+"];
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -29,17 +30,17 @@ export default function ContactPage() {
     company: "",
     budget: "",
     message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    toast.success("Message sent successfully! We'll get back to you soon.")
+    toast.success("Message sent successfully! We'll get back to you soon.");
 
     setFormData({
       name: "",
@@ -47,10 +48,10 @@ export default function ContactPage() {
       company: "",
       budget: "",
       message: "",
-    })
+    });
 
-    setIsSubmitting(false)
-  }
+    setIsSubmitting(false);
+  };
 
   return (
     <div className="section-container">
@@ -73,7 +74,9 @@ export default function ContactPage() {
                     id="name"
                     placeholder="John Doe"
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                     required
                     className="focus-ring"
                   />
@@ -86,7 +89,9 @@ export default function ContactPage() {
                     type="email"
                     placeholder="john@company.com"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                     required
                     className="focus-ring"
                   />
@@ -99,7 +104,9 @@ export default function ContactPage() {
                   id="company"
                   placeholder="Company Name"
                   value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, company: e.target.value })
+                  }
                   className="focus-ring"
                 />
               </div>
@@ -111,7 +118,9 @@ export default function ContactPage() {
                     <button
                       key={range}
                       type="button"
-                      onClick={() => setFormData({ ...formData, budget: range })}
+                      onClick={() =>
+                        setFormData({ ...formData, budget: range })
+                      }
                       className={`px-4 py-3 rounded-xl border-2 transition-all text-sm font-medium ${
                         formData.budget === range
                           ? "border-primary bg-primary/10 text-primary"
@@ -130,7 +139,9 @@ export default function ContactPage() {
                   id="message"
                   placeholder="Describe your project, goals, and timeline..."
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
                   required
                   rows={6}
                   className="focus-ring resize-none"
@@ -235,7 +246,8 @@ export default function ContactPage() {
               <Badge className="mb-3">Resources</Badge>
               <h3 className="font-semibold mb-2">Company Profile</h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Download our detailed company profile to learn more about our capabilities and past work.
+                Download our detailed company profile to learn more about our
+                capabilities and past work.
               </p>
               <Button variant="outline" className="w-full">
                 Download PDF
@@ -271,7 +283,9 @@ export default function ContactPage() {
             ].map((office, index) => (
               <div key={index} className="glass p-6 rounded-2xl text-center">
                 <div className="text-2xl font-bold mb-1">{office.city}</div>
-                <div className="text-muted-foreground text-sm mb-3">{office.country}</div>
+                <div className="text-muted-foreground text-sm mb-3">
+                  {office.country}
+                </div>
                 <p className="text-sm">{office.address}</p>
               </div>
             ))}
@@ -279,5 +293,5 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

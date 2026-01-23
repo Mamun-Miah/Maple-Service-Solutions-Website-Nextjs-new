@@ -1,15 +1,15 @@
-'use client'
+"use client";
 
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 // Premium easing curves
-const EASE_CINEMATIC = [0.16, 1, 0.3, 1]
+const EASE_CINEMATIC = [0.16, 1, 0.3, 1];
 
 interface ExpertiseItemProps {
-  title: string
-  items: string[]
-  index?: number
+  title: string;
+  items: string[];
+  index?: number;
 }
 
 /**
@@ -18,8 +18,8 @@ interface ExpertiseItemProps {
  * Each bullet reveals with stagger + underline grow (not fade).
  */
 function ExpertiseItem({ title, items, index = 0 }: ExpertiseItemProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
     <div ref={ref} className="mb-8">
@@ -29,9 +29,9 @@ function ExpertiseItem({ title, items, index = 0 }: ExpertiseItemProps) {
         transition={{
           duration: 0.48,
           ease: EASE_CINEMATIC,
-          delay: index * 0.08
+          delay: index * 0.08,
         }}
-        className="text-lg font-semibold text-[var(--svc-text)] mb-4"
+        className="text-lg font-semibold text-gray-300 mb-4"
       >
         {title}
       </motion.h3>
@@ -45,11 +45,11 @@ function ExpertiseItem({ title, items, index = 0 }: ExpertiseItemProps) {
             transition={{
               duration: 0.4,
               ease: EASE_CINEMATIC,
-              delay: index * 0.08 + (i * 0.06)
+              delay: index * 0.08 + i * 0.06,
             }}
             className="relative"
           >
-            <div className="flex items-start gap-3 text-[var(--svc-muted)]">
+            <div className="flex items-start gap-3 text-gray-400">
               <div className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--svc-secondary)]" />
               <span>{item}</span>
             </div>
@@ -57,25 +57,25 @@ function ExpertiseItem({ title, items, index = 0 }: ExpertiseItemProps) {
             {/* Underline grow (not fade) */}
             <motion.div
               className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[var(--svc-secondary)]/0 via-[var(--svc-secondary)] to-[var(--svc-secondary)]/0"
-              initial={{ width: '0%' }}
-              animate={isInView ? { width: '100%' } : undefined}
+              initial={{ width: "0%" }}
+              animate={isInView ? { width: "100%" } : undefined}
               transition={{
                 duration: 0.56,
                 ease: EASE_CINEMATIC,
-                delay: index * 0.08 + (i * 0.06) + 0.1
+                delay: index * 0.08 + i * 0.06 + 0.1,
               }}
             />
           </motion.li>
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
 interface ExpertiseColumnProps {
-  title: string
-  expertiseItems: Array<{ title: string; items: string[] }>
-  delay?: number
+  title: string;
+  expertiseItems: Array<{ title: string; items: string[] }>;
+  delay?: number;
 }
 
 /**
@@ -83,9 +83,13 @@ interface ExpertiseColumnProps {
  *
  * Left column reveals first, right column reveals second.
  */
-export function ExpertiseColumn({ title, expertiseItems, delay = 0 }: ExpertiseColumnProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
+export function ExpertiseColumn({
+  title,
+  expertiseItems,
+  delay = 0,
+}: ExpertiseColumnProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
     <div ref={ref} className="flex-1">
@@ -95,9 +99,9 @@ export function ExpertiseColumn({ title, expertiseItems, delay = 0 }: ExpertiseC
         transition={{
           duration: 0.56,
           ease: EASE_CINEMATIC,
-          delay
+          delay,
         }}
-        className="text-2xl font-semibold text-[var(--svc-text)] mb-8"
+        className="text-2xl font-semibold text-gray-300 mb-8"
       >
         {title}
       </motion.h2>
@@ -113,5 +117,5 @@ export function ExpertiseColumn({ title, expertiseItems, delay = 0 }: ExpertiseC
         ))}
       </div>
     </div>
-  )
+  );
 }

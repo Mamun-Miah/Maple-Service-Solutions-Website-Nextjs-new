@@ -1,26 +1,28 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { motion } from "framer-motion"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export interface StatItem {
-  label: string
-  value: string
-  description?: string
+  label: string;
+  value: string;
+  description?: string;
 }
 
 export interface StatsRowProps {
-  stats: StatItem[]
-  className?: string
+  stats: StatItem[];
+  className?: string;
 }
 
 export function StatsRow({ stats, className }: StatsRowProps) {
   return (
-    <div className={cn(
-      "grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8",
-      className
-    )}>
+    <div
+      className={cn(
+        "grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8",
+        className,
+      )}
+    >
       {stats.map((stat, index) => (
         <motion.div
           key={index}
@@ -30,10 +32,10 @@ export function StatsRow({ stats, className }: StatsRowProps) {
           transition={{ duration: 0.5, delay: index * 0.1 }}
           className="text-center md:text-left"
         >
-          <div className="text-3xl md:text-4xl font-bold text-gradient mb-1">
+          <div className="text-3xl md:text-4xl font-bold text-gray-300 mb-1">
             {stat.value}
           </div>
-          <div className="text-sm font-medium text-foreground mb-1">
+          <div className="text-sm font-medium text-gray-500 mb-1">
             {stat.label}
           </div>
           {stat.description && (
@@ -44,5 +46,5 @@ export function StatsRow({ stats, className }: StatsRowProps) {
         </motion.div>
       ))}
     </div>
-  )
+  );
 }
