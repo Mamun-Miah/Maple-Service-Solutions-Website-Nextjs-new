@@ -1,16 +1,20 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { motion, Variants } from "framer-motion"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { motion, Variants } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export interface FlowLineRevealProps {
-  children: string
-  className?: string
-  delay?: number
+  children: string;
+  className?: string;
+  delay?: number;
 }
 
-export function FlowLineReveal({ children, className, delay = 1.2 }: FlowLineRevealProps) {
+export function FlowLineReveal({
+  children,
+  className,
+  delay = 1.2,
+}: FlowLineRevealProps) {
   const containerVariants: Variants = {
     hidden: {
       opacity: 0,
@@ -25,7 +29,7 @@ export function FlowLineReveal({ children, className, delay = 1.2 }: FlowLineRev
         ease: [0.16, 1, 0.3, 1],
       },
     },
-  }
+  };
 
   const lineVariants: Variants = {
     hidden: {
@@ -41,7 +45,7 @@ export function FlowLineReveal({ children, className, delay = 1.2 }: FlowLineRev
         ease: [0.16, 1, 0.3, 1],
       },
     },
-  }
+  };
 
   return (
     <div className={cn("relative", className)}>
@@ -55,11 +59,11 @@ export function FlowLineReveal({ children, className, delay = 1.2 }: FlowLineRev
       </motion.div>
 
       <motion.div
-        className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+        className="absolute bottom-0 left-0 h-0.5"
         initial="hidden"
         animate="visible"
         variants={lineVariants}
       />
     </div>
-  )
+  );
 }

@@ -201,25 +201,25 @@ export default function ServicesPage() {
       {/* Hero Section with Background Image */}
       <section
         ref={heroRef}
-        className="relative min-h-[60vh] flex items-center overflow-hidden z-10"
+        className="bg-[url('/backgrounds/services/services-hero-light.png')] bg-center bg-cover overlay-indigo section-vignette relative min-h-[60vh] flex items-center overflow-hidden z-10"
       >
         {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          {/* Light overlay gradient for readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[var(--svc-overlay-light)]/50 via-[var(--svc-overlay-light)]/40 to-[var(--svc-overlay-light)]/30 dark:bg-gradient-to-b dark:from-[var(--svc-overlay-dark)]/60 dark:via-[var(--svc-overlay-dark)]/50 dark:to-[var(--svc-overlay-dark)]/40" />
-          <picture className="w-full h-full">
-            <source
-              srcSet="/backgrounds/services/services-hero-dark.png"
-              media="(prefers-color-scheme: dark)"
-            />
-            <img
-              src="/backgrounds/services/services-hero-light.png"
-              alt=""
-              className="w-full h-full object-cover"
-              style={{ opacity: 0.4 }}
-            />
-          </picture>
-        </div>
+        {/* <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 ">
+            <picture className="w-full h-full">
+              <source
+                srcSet="/service.png"
+                media="(prefers-color-scheme: dark)"
+              />
+              <img
+                src="/backgrounds/services/services-hero-light.png"
+                alt=""
+                className="w-full h-full"
+                style={{ opacity: 0.4 }}
+              />
+            </picture>
+          </div>
+        </div> */}
 
         {/* Hero Content - Studio Reveal */}
         <div className="relative z-20 container mx-auto px-6 py-20">
@@ -262,16 +262,16 @@ export default function ServicesPage() {
               transition={{ duration: 0.56, ease: EASE_CINEMATIC, delay: 0.32 }}
               className="relative"
             >
-              <span className="text-xl text-slate-100 max-w-2xl block">
+              <p className="text-xl text-slate-100 max-w-2xl block">
                 End-to-end capabilities from strategy to execution, all under
                 one roof.
-              </span>
-              <motion.div
+              </p>
+              {/* <motion.div
                 initial={{ width: "0%" }}
                 animate={heroInView ? { width: "100%" } : {}}
                 transition={{ duration: 0.8, ease: EASE_CINEMATIC, delay: 0.4 }}
                 className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[var(--svc-primary)]/0 via-[var(--svc-secondary)] to-[var(--svc-primary)]/0"
-              />
+              /> */}
             </motion.div>
           </div>
         </div>

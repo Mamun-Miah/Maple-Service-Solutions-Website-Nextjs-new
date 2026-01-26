@@ -9,11 +9,11 @@ const EASE_CINEMATIC = [0.22, 1, 0.36, 1] as const;
 
 export function ProductsHero() {
   return (
-    <section className="relative">
+    <section className="relative product-hero-bg overlay-indigo section-vignette">
       {/* Hero content */}
-      <div className="bg-black/70 relative z-10">
+      <div className="relative z-10 ">
         {/* Eyebrow */}
-        <div className="max-w-7xl px-6 md:px-8 py-10">
+        <div className="max-w-7xl px-6 md:px-8 py-16">
           <motion.p
             initial={{ opacity: 0, y: 18, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -50,7 +50,11 @@ export function ProductsHero() {
             transition={{ duration: 0.72, ease: EASE_CINEMATIC, delay: 0.3 }}
             className="flex flex-wrap gap-4"
           >
-            <Button asChild size="lg" className="bg-gray-500 text-white px-8">
+            <Button
+              asChild
+              size="lg"
+              className="bg-violet-500 text-white px-8 hover:bg-violet-600"
+            >
               <Link href="/contact">Start a Project</Link>
             </Button>
             <Button
@@ -58,10 +62,6 @@ export function ProductsHero() {
               variant="outline"
               size="lg"
               className="text-base px-8"
-              style={{
-                borderColor: "var(--prd-border)",
-                color: "var(--prd-text)",
-              }}
             >
               <Link href="#products-grid">Explore Products</Link>
             </Button>

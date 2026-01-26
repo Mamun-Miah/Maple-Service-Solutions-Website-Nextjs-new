@@ -46,8 +46,10 @@ export default function WorkPage() {
   return (
     <main data-page="work" className="relative overflow-hidden min-h-screen">
       {/* Hero Section */}
-      <section className="mx-auto max-w-7xl px-6 md:px-8 py-16 relative z-10">
-        <WorkHero />
+      <section className="bg-[url('/work/work.jpg') bg-center">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 py-16 relative z-10">
+          <WorkHero />
+        </div>
       </section>
 
       {/* Filters Section */}

@@ -158,7 +158,7 @@ export default function HomePage() {
           </motion.div>
 
           {/* Logo Cloud Placeholder */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -177,7 +177,7 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Scroll Indicator */}
@@ -261,6 +261,7 @@ export default function HomePage() {
           <div className="content-max">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
               <SectionHeader
+                align="left"
                 badge="Our Products"
                 title={<SplitWordReveal>Products We've Built</SplitWordReveal>}
                 description="Real products solving real problems, from MVP to enterprise scale."
@@ -384,8 +385,9 @@ export default function HomePage() {
           <div className="content-max">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
               <SectionHeader
+                // align="center"
                 badge="Selected Work"
-                title={<SplitWordReveal>Featured Case Studies</SplitWordReveal>}
+                title="Featured Case Studies"
                 description="Real impact, real results. See how we've helped businesses transform."
               />
               <Link href="/work">
@@ -453,8 +455,8 @@ export default function HomePage() {
                 },
               ].map((item, index) => (
                 <LiftOnAwareness key={index} delay={index * 0.12}>
-                  <div className="glass p-6 rounded-2xl">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-primary mb-4">
+                  <div className="h-full p-6 rounded-2x glass">
+                    <div className="w-12 h-12 rounded-xl bg-linear-to-br from-primary/20 to-accent/20 flex items-center justify-center text-primary mb-4">
                       {item.icon}
                     </div>
                     <h3 className="font-semibold mb-2">{item.title}</h3>
@@ -501,7 +503,7 @@ export default function HomePage() {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
               <SectionHeader
                 badge="Industries"
-                title={<SplitWordReveal>Industries We Serve</SplitWordReveal>}
+                title="Industries We Serve"
                 description="Deep expertise across sectors, with specialized solutions for each."
               />
               <Link href="/industries">

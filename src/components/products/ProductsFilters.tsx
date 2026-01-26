@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const EASE_CINEMATIC = [0.22, 1, 0.36, 1] as const;
 
-type FilterType = "all" | "live" | "beta" | "coming-soon";
+export type FilterType = "all" | "live" | "beta" | "coming-soon";
 
 interface ProductsFiltersProps {
   activeFilter: FilterType;

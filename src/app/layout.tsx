@@ -20,10 +20,12 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL("https://mapleservice.com"),
   title: {
-    default: "Maple Service Solution - AI-Powered Products & Premium Digital Experiences",
-    template: "%s | Maple Service Solution"
+    default:
+      "Maple Service Solution - AI-Powered Products & Premium Digital Experiences",
+    template: "%s | Maple Service Solution",
   },
-  description: "We build intelligent products that define markets. AI, platforms, design, engineering, and growth systems under one roof. Built in Bangladesh. Designed for the world.",
+  description:
+    "We build intelligent products that define markets. AI, platforms, design, engineering, and growth systems under one roof. Built in Bangladesh. Designed for the world.",
   keywords: [
     "Maple Service Solution",
     "AI products",
@@ -35,7 +37,7 @@ export const metadata: Metadata = {
     "SaaS development",
     "enterprise solutions",
     "automation",
-    "growth optimization"
+    "growth optimization",
   ],
   authors: [{ name: "Maple Service Solution Limited" }],
   creator: "Maple Service Solution",
@@ -52,30 +54,34 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/logo.svg",
-    shortcut: "/logo.svg",
-    apple: "/logo.svg",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://mapleservice.com",
     siteName: "Maple Service Solution",
-    title: "Maple Service Solution - AI-Powered Products & Premium Digital Experiences",
-    description: "We build intelligent products that define markets. AI, platforms, design, engineering, and growth systems under one roof.",
+    title:
+      "Maple Service Solution - AI-Powered Products & Premium Digital Experiences",
+    description:
+      "We build intelligent products that define markets. AI, platforms, design, engineering, and growth systems under one roof.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Maple Service Solution"
-      }
-    ]
+        alt: "Maple Service Solution",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Maple Service Solution - AI-Powered Products & Premium Digital Experiences",
-    description: "We build intelligent products that define markets. AI, platforms, design, engineering, and growth systems under one roof.",
+    title:
+      "Maple Service Solution - AI-Powered Products & Premium Digital Experiences",
+    description:
+      "We build intelligent products that define markets. AI, platforms, design, engineering, and growth systems under one roof.",
     images: ["/og-image.png"],
   },
 };
@@ -89,7 +95,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-background text-foreground`}

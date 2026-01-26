@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { motion, Variants, useInView } from "framer-motion"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { motion, Variants, useInView } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export interface SplitWordRevealProps {
-  children: string
-  className?: string
-  delay?: number
-  viewportOnce?: boolean
+  children: string;
+  className?: string;
+  delay?: number;
+  viewportOnce?: boolean;
 }
 
 export function SplitWordReveal({
@@ -17,14 +17,13 @@ export function SplitWordReveal({
   delay = 0,
   viewportOnce = true,
 }: SplitWordRevealProps) {
-  const ref = React.useRef<HTMLDivElement>(null)
+  const ref = React.useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, {
     once: viewportOnce,
     margin: "-50px",
-  })
+  });
 
-  const words = children.split(" ")
-
+  const words = children.split(" ");
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -34,7 +33,7 @@ export function SplitWordReveal({
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const wordVariants: Variants = {
     hidden: {
@@ -49,7 +48,7 @@ export function SplitWordReveal({
         ease: [0.16, 1, 0.3, 1],
       },
     },
-  }
+  };
 
   return (
     <div ref={ref} className={cn("inline-block", className)}>
@@ -70,5 +69,5 @@ export function SplitWordReveal({
         ))}
       </motion.div>
     </div>
-  )
+  );
 }
