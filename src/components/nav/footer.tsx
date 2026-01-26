@@ -1,7 +1,8 @@
-import Link from "next/link"
-import { Github, Linkedin, Twitter } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import { Facebook, Github, Linkedin, Twitter } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const footerLinks = {
   products: [
@@ -22,7 +23,7 @@ const footerLinks = {
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
   ],
-}
+};
 
 export function Footer() {
   return (
@@ -34,24 +35,35 @@ export function Footer() {
             {/* Brand Column */}
             <div className="lg:col-span-1">
               <Link href="/" className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold text-xl">
-                  M
-                </div>
-                <span className="font-semibold text-xl">Maple Service Solution</span>
+                <Image
+                  className="w-36"
+                  src="/logo.png"
+                  alt="logo"
+                  height={70}
+                  width={120}
+                />
               </Link>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                We build intelligent products that define markets. AI, platforms, design, engineering, and growth systems under one roof.
+                We build intelligent products that define markets. AI,
+                platforms, design, engineering, and growth systems under one
+                roof.
               </p>
               <div className="flex gap-3">
-                <Button variant="ghost" size="icon" className="h-9 w-9">
-                  <Twitter className="h-4 w-4" />
-                </Button>
-                <Button variant="ghost" size="icon" className="h-9 w-9">
-                  <Linkedin className="h-4 w-4" />
-                </Button>
-                <Button variant="ghost" size="icon" className="h-9 w-9">
-                  <Github className="h-4 w-4" />
-                </Button>
+                <Link href="/">
+                  <Button variant="ghost" size="icon" className="h-9 w-9">
+                    <Twitter className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="https://www.linkedin.com/company/msslbd/posts/?feedView=all">
+                  <Button variant="ghost" size="icon" className="h-9 w-9">
+                    <Linkedin className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="https://www.facebook.com/mapleitfirm/">
+                  <Button variant="ghost" size="icon" className="h-9 w-9">
+                    <Facebook className="h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
             </div>
 
@@ -93,12 +105,11 @@ export function Footer() {
             <div>
               <h3 className="font-semibold mb-4">Get Started</h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Ready to build something exceptional? Let's talk about your next project.
+                Ready to build something exceptional? Let's talk about your next
+                project.
               </p>
               <Link href="/contact">
-                <Button className="w-full">
-                  Start a Project
-                </Button>
+                <Button className="w-full">Start a Project</Button>
               </Link>
               <div className="mt-4">
                 <Link
@@ -114,7 +125,8 @@ export function Footer() {
           {/* Bottom Bar */}
           <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Maple Service Solution Limited. All rights reserved.
+              © {new Date().getFullYear()} Maple Service Solution Limited. All
+              rights reserved.
             </p>
             <div className="flex gap-6">
               {footerLinks.legal.map((link) => (
@@ -131,5 +143,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

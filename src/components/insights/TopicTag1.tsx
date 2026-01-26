@@ -20,11 +20,11 @@ export function TopicTag({ tag, index, onClick }: TopicTagProps) {
       onClick={() => onClick?.(tag)}
       className={cn(
         "px-4 py-2 text-sm font-medium rounded-full",
-        "bg-[#f3ecef] dark:bg-[#1b1018] text-[#6d3e58] dark:text-[#c9a6b8]",
+        "bg-[var(--ins-bg-alt)] text-[var(--ins-muted)]",
         "border border-transparent",
         "transition-all duration-200",
-        "hover:bg-[#e6b3cd]/20 dark:hover:bg-white/10 hover:text-[#663051] dark:hover:text-[#b65a8e] hover:border-[#e6d4db] dark:hover:border-white/10",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#663051] focus-visible:ring-offset-2",
+        "hover:bg-[var(--ins-highlight)] hover:text-[var(--ins-primary)] hover:border-[var(--ins-border)]",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ins-primary)] focus-visible:ring-offset-2",
         "cursor-pointer",
       )}
     >

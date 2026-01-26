@@ -4,10 +4,75 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { SectionHeader } from "@/components/components/section-header";
+import Image from "next/image";
 
-/* ---------------- COMPONENTS ---------------- */
+const team = [
+  {
+    name: "Mamun Miah",
+    role: "Senior Full-Stack Developer",
+    description:
+      "An experienced engineer with a strong command of modern frontend and backend technologies. Leads complex projects, designs scalable architectures, and ensures high-quality, maintainable code while mentoring team members and driving technical excellence.",
+  },
+  {
+    name: "Akash Mehmud",
+    role: "Digital Marketer",
+    description:
+      "A data-driven strategist focused on growing brand visibility and customer engagement. Manages digital campaigns, SEO, content strategy, and analytics to drive measurable results and support business growth through effective online marketing.",
+  },
+  {
+    name: "Dev Sweet",
+    role: "Full Stack Engineer",
+    description:
+      "Engineering expert with deep experience in designing and developing scalable, secure, and maintainable full-stack systems.",
+  },
+];
 
-// Timeline Component
+// animations
+const fadeUp = {
+  hidden: { opacity: 0, y: 40, rotate: -2, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    rotate: 0,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+      type: "spring",
+      stiffness: 120,
+      damping: 20,
+    },
+  },
+};
+
+const slideLeft = {
+  hidden: { opacity: 0, x: -60, rotate: -1, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    rotate: 0,
+    scale: 1,
+    transition: { duration: 0.7, type: "spring", stiffness: 120, damping: 18 },
+  },
+};
+
+const slideRight = {
+  hidden: { opacity: 0, x: 60, rotate: 1, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    rotate: 0,
+    scale: 1,
+    transition: { duration: 0.7, type: "spring", stiffness: 120, damping: 18 },
+  },
+};
+const stagger = {
+  visible: {
+    transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+  },
+};
+// Timeline component
 const Timeline = () => {
   const timelineRef = useRef<HTMLDivElement>(null);
   const isVisible = useInView(timelineRef, { once: true, amount: 0.2 });
@@ -444,7 +509,91 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </section>
+      <div className="relative overflow-hidden py-20">
+        <SectionHeader
+          align="center"
+          badge="Our Leadership"
+          title="Vision Driven by Experience"
+        />
+        <div className="mx-auto max-w-6xl px-6 mt-20 flex flex-col md:flex-row items-center gap-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={slideLeft}
+            className="w-full md:w-5/12 flex justify-center md:justify-start"
+          >
+            <div className="group relative w-full max-w-sm">
+              <div className="absolute -inset-4 rounded-3xl group-hover:bg-indigo-950 group-hover:blur-2xl transition-all duration-300" />
+              <div className="relative overflow-hidden rounded-3xl border border-slate-700 shadow-xl">
+                <Image
+                  src="/about/ceo-fav.jpeg"
+                  alt="CEO"
+                  width={400}
+                  height={480}
+                  className="h-125 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+            </div>
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={slideRight}
+            className="w-full md:w-7/12 space-y-6 text-center md:text-left"
+          >
+            <h3 className="text-2xl font-semibold text-slate-200">
+              Message from Our CEO
+            </h3>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-300">
+              At our core, we believe technology should empower people, simplify
+              complexity, and create lasting impact. Our mission is to build
+              products that are reliable, scalable, and designed with real human
+              needs in mind.
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-300">
+              We foster a culture of innovation, ownership, and continuous
+              learning — because great software is built by teams who care
+              deeply about quality and purpose.
+            </p>
+            <div className="pt-4">
+              <p className="font-semibold text-slate-200">Anamul Hoque</p>
+              <p className="text-sm text-slate-400">Chief Executive Officer</p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
 
+      {/* Leadership Team */}
+      <div className="mb-20">
+        <SectionHeader align="center" badge="Leadership" title="Our Team" />
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={stagger}
+          className="grid md:grid-cols-3 gap-6"
+        >
+          {team.map((member, index) => (
+            <motion.div
+              key={index}
+              variants={fadeUp}
+              whileHover={{ y: -5 }}
+              className="glass card-hover p-6 rounded-2xl text-center"
+            >
+              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 mx-auto mb-4 flex items-center justify-center text-3xl font-bold text-primary">
+                {member.name.charAt(0)}
+              </div>
+              <h3 className="font-semibold text-lg mb-1">{member.name}</h3>
+              <p className="text-sm text-primary mb-3">{member.role}</p>
+              <p className="text-sm text-muted-foreground">
+                {member.description}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
       {/* GLOBAL FOOTPRINT / STATS SECTION */}
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-6 md:px-8">

@@ -26,17 +26,17 @@ export function FeaturedArticle({ insight }: FeaturedArticleProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className={cn(
-          "group relative overflow-hidden rounded-lg bg-white dark:bg-white/5",
-          "border border-[#e6d4db] dark:border-white/10",
+          "group relative overflow-hidden rounded-lg bg-[var(--ins-card)]",
+          "border border-[var(--ins-border)]",
           "transition-all duration-300",
           "hover:shadow-lg hover:-translate-y-0.5",
         )}
       >
         <div className="flex flex-col lg:flex-row">
           {/* Image placeholder */}
-          <div className="lg:w-2/5 bg-[#f3ecef] dark:bg-[#1b1018] min-h-[240px] lg:min-h-full relative overflow-hidden">
+          <div className="lg:w-2/5 bg-[var(--ins-bg-alt)] min-h-[240px] lg:min-h-full relative overflow-hidden">
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-[#6d3e58] dark:text-[#c9a6b8] text-sm">
+              <span className="text-[var(--ins-muted)] text-sm">
                 Article Image
               </span>
             </div>
@@ -49,30 +49,30 @@ export function FeaturedArticle({ insight }: FeaturedArticleProps) {
               animate={{ opacity: 1, filter: "blur(0px)" }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-[#663051] dark:bg-[#b65a8e] text-white mb-4">
+              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-[var(--ins-primary)] text-white mb-4">
                 {insight.category}
               </span>
 
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4 leading-tight group-hover:text-[#663051] dark:group-hover:text-[#b65a8e] transition-colors">
+              <h2 className="text-3xl lg:text-4xl font-bold text-[var(--ins-text)] mb-4 leading-tight group-hover:text-[var(--ins-primary)] transition-colors">
                 {insight.title}
               </h2>
 
-              <p className="text-[#6d3e58] dark:text-[#c9a6b8] text-lg mb-6 leading-relaxed">
+              <p className="text-[var(--ins-muted)] text-lg mb-6 leading-relaxed">
                 {insight.excerpt}
               </p>
 
               <div className="flex items-center gap-6 mb-6">
-                <div className="flex items-center gap-2 text-sm text-[#6d3e58] dark:text-[#c9a6b8]">
+                <div className="flex items-center gap-2 text-sm text-[var(--ins-muted)]">
                   <Calendar className="h-4 w-4" />
                   <span>{formatDate(insight.publishedAt)}</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-[#6d3e58] dark:text-[#c9a6b8]">
+                <div className="flex items-center gap-2 text-sm text-[var(--ins-muted)]">
                   <Clock className="h-4 w-4" />
                   <span>{insight.readTime} min read</span>
                 </div>
               </div>
 
-              <div className="flex items-center text-[#663051] dark:text-[#b65a8e] font-medium group">
+              <div className="flex items-center text-[var(--ins-primary)] font-medium group">
                 <span>Read more</span>
                 <motion.span
                   initial={{ x: 0 }}

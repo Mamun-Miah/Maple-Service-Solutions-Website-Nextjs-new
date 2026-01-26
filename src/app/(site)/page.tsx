@@ -196,11 +196,11 @@ export default function HomePage() {
           SECTION B - Identity Triangle
           ======================================== */}
       <ScrollReveal direction="up" delay={0.1}>
-        <section className="section-container bg-background/50">
+        <section className="section-container   bg-indigo-hero overlay-indigo section-vignette">
           <div className="content-max">
             <SectionHeader
               align="center"
-              title={<SplitWordReveal>Who We Are</SplitWordReveal>}
+              title="Who We Are"
               description="A product company with the soul of a design studio and the precision of an engineering powerhouse."
             />
 
@@ -263,7 +263,7 @@ export default function HomePage() {
               <SectionHeader
                 align="left"
                 badge="Our Products"
-                title={<SplitWordReveal>Products We've Built</SplitWordReveal>}
+                title="Products We've Built"
                 description="Real products solving real problems, from MVP to enterprise scale."
               />
               <Link href="/products">
@@ -310,9 +310,7 @@ export default function HomePage() {
               <div className="lg:sticky lg:top-32 h-fit">
                 <SectionHeader
                   badge="Our Services"
-                  title={
-                    <SplitWordReveal>What We Build for Clients</SplitWordReveal>
-                  }
+                  title="What We Build for Clients"
                   description="End-to-end capabilities from strategy to execution."
                 />
               </div>
@@ -345,7 +343,7 @@ export default function HomePage() {
           <SectionHeader
             align="center"
             badge="Our Process"
-            title={<SplitWordReveal>How We Work</SplitWordReveal>}
+            title="How We Work"
             description="A proven process that turns ideas into market-ready products."
           />
 
@@ -423,7 +421,7 @@ export default function HomePage() {
             <SectionHeader
               align="center"
               badge="Our Promise"
-              title={<SplitWordReveal>Why Maple</SplitWordReveal>}
+              title="Why Maple"
               description="We're not just another agency. We're your partner in building exceptional products."
             />
 
@@ -478,10 +476,10 @@ export default function HomePage() {
                   <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16">
                     {["Clarity", "Craft", "Scale"].map((item, index) => (
                       <div key={index} className="text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-gray-500 mb-2">
+                        <div className="text-4xl md:text-5xl font-bold text-gray-300 mb-2">
                           0{index + 1}
                         </div>
-                        <div className="text-lg font-semibold text-heading">
+                        <div className="text-lg font-semibold text-gray-500">
                           {item}
                         </div>
                       </div>
@@ -547,11 +545,7 @@ export default function HomePage() {
                 <div>
                   <SectionHeader
                     badge="Our Story"
-                    title={
-                      <Expansion center={true}>
-                        From Bangladesh to World
-                      </Expansion>
-                    }
+                    title="From Bangladesh to World"
                     description="We're building world-class products from Bangladesh, proving that great technology can come from anywhere."
                   />
 

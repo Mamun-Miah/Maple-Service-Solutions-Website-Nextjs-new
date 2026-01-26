@@ -16,24 +16,24 @@ export function FilterTabs({
 }: FilterTabsProps) {
   return (
     <div className="relative mb-12">
-      <div className="flex flex-wrap gap-2 border-b border-[#e6d4db] dark:border-white/10">
+      <div className="flex flex-wrap gap-2 border-b border-[var(--ins-border)]">
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => onCategoryChange(category)}
             className={cn(
               "relative px-4 py-3 text-sm font-medium transition-colors",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#663051] focus-visible:ring-offset-2",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ins-primary)] focus-visible:ring-offset-2",
               activeCategory === category
-                ? "text-[#663051] dark:text-[#b65a8e]"
-                : "text-[#6d3e58] dark:text-[#c9a6b8] hover:text-[#2a0f1e] dark:hover:text-[#f6edf2]",
+                ? "text-[var(--ins-primary)]"
+                : "text-[var(--ins-muted)] hover:text-[var(--ins-text)]",
             )}
           >
             {category}
             {activeCategory === category && (
               <motion.div
                 layoutId="activeTab"
-                className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#663051] dark:bg-[#b65a8e]"
+                className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--ins-primary)]"
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}

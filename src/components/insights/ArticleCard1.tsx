@@ -32,34 +32,34 @@ export function ArticleCard({ insight, index }: ArticleCardProps) {
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
           className={cn(
             "group h-full flex flex-col p-6 rounded-lg",
-            "bg-white dark:bg-white/5 border border-[#e6d4db] dark:border-white/10",
+            "bg-[var(--ins-card)] border border-[var(--ins-border)]",
             "transition-all duration-300",
             "hover:shadow-md",
           )}
         >
-          <span className="inline-block px-2.5 py-1 text-xs font-medium rounded-full bg-[#f3ecef] dark:bg-[#1b1018] text-[#663051] dark:text-[#b65a8e] mb-4 w-fit">
+          <span className="inline-block px-2.5 py-1 text-xs font-medium rounded-full bg-[var(--ins-bg-alt)] text-[var(--ins-primary)] mb-4 w-fit">
             {insight.category}
           </span>
 
-          <h3 className="text-xl font-bold mb-3 leading-snug group-hover:text-[#663051] dark:group-hover:text-[#b65a8e] transition-colors">
+          <h3 className="text-xl font-bold text-[var(--ins-text)] mb-3 leading-snug group-hover:text-[var(--ins-primary)] transition-colors">
             {insight.title}
           </h3>
 
-          <p className="text-[#6d3e58] dark:text-[#c9a6b8] text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
+          <p className="text-[var(--ins-muted)] text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
             {insight.excerpt}
           </p>
 
-          <div className="flex items-center justify-between pt-4 border-t border-[#e6d4db] dark:border-white/10 mt-auto">
-            <div className="flex items-center gap-2 text-sm text-[#6d3e58] dark:text-[#c9a6b8]">
+          <div className="flex items-center justify-between pt-4 border-t border-[var(--ins-border)] mt-auto">
+            <div className="flex items-center gap-2 text-sm text-[var(--ins-muted)]">
               <Clock className="h-3.5 w-3.5" />
               <span>{insight.readTime} min</span>
             </div>
-            <span className="text-sm text-[#6d3e58] dark:text-[#c9a6b8]">
+            <span className="text-sm text-[var(--ins-muted)]">
               {formatDate(insight.publishedAt)}
             </span>
           </div>
 
-          <div className="flex items-center text-[#663051] dark:text-[#b65a8e] font-medium text-sm mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="flex items-center text-[var(--ins-primary)] font-medium text-sm mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
             <span>Read article</span>
             <motion.span
               initial={{ x: 0 }}

@@ -13,10 +13,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FilterTabs } from "@/components/insights/FilterTabs";
-import { Mail } from "lucide-react";
 import { FeaturedArticle } from "@/components/insights/FeaturedArticle";
 import { ArticleCard } from "@/components/insights/ArticleCard";
 import { TopicTag } from "@/components/insights/TopicTag";
+import { ArrowRight, Mail } from "lucide-react";
 
 export default function InsightsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -43,13 +43,101 @@ export default function InsightsPage() {
   };
 
   return (
-    <main className="relative min-h-screen bg-[#fbf8fa] text-[#2a0f1e] dark:bg-[#120a10] dark:text-[#f6edf2] transition-colors">
-      {/* Background Gradient Effect */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(900px_600px_at_15%_10%,rgba(102,48,81,0.08),transparent_60%)] dark:bg-[radial-gradient(900px_600px_at_15%_10%,rgba(182,90,142,0.14),transparent_60%)]" />
-      </div>
+    <>
+      {/* Page-scoped CSS variables */}
+      <style jsx global>{`
+        [data-page="insights"] {
+          /* Light Mode Colors */
+          --ins-bg: #fbf8fa;
+          --ins-bg-alt: #f3ecef;
+          --ins-card: #ffffff;
+          --ins-border: #e6d4db;
+          --ins-text: #2a0f1e;
+          --ins-muted: #6d3e58;
+          --ins-primary: #663051;
+          --ins-secondary: #8c3f6e;
+          --ins-accent: #b65a8e;
+          --ins-highlight: #e6b3cd;
+        }
 
-      <div className="relative z-10">
+        [data-theme="dark"] [data-page="insights"] {
+          /* Dark Mode Colors */
+          --ins-bg: #120a10;
+          --ins-bg-alt: #1b1018;
+          --ins-card: rgba(255, 255, 255, 0.06);
+          --ins-border: rgba(255, 255, 255, 0.12);
+          --ins-text: #f6edf2;
+          --ins-muted: #c9a6b8;
+          --ins-primary: #b65a8e;
+          --ins-secondary: #8c3f6e;
+          --ins-accent: #663051;
+          --ins-highlight: rgba(182, 90, 142, 0.14);
+        }
+
+        [data-page="insights"] {
+          background: var(--ins-bg);
+          min-height: 100vh;
+        }
+
+        [data-page="insights"]::before {
+          content: "";
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        [data-theme="light"] [data-page="insights"]::before {
+          background: radial-gradient(
+            900px 600px at 15% 10%,
+            rgba(102, 48, 81, 0.08),
+            transparent 60%
+          );
+        }
+
+        [data-theme="dark"] [data-page="insights"]::before {
+          background: radial-gradient(
+            900px 600px at 15% 10%,
+            rgba(182, 90, 142, 0.14),
+            transparent 60%
+          );
+        }
+
+        [data-page="insights"] > * {
+          position: relative;
+          z-index: 1;
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        [data-page="insights"] ::-webkit-scrollbar {
+          width: 8px;
+          height: 8px;
+        }
+
+        [data-page="insights"] ::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        [data-page="insights"] ::-webkit-scrollbar-thumb {
+          background: var(--ins-border);
+          border-radius: 4px;
+        }
+
+        [data-page="insights"] ::-webkit-scrollbar-thumb:hover {
+          background: var(--ins-muted);
+        }
+
+        /* Focus-visible rings for accessibility */
+        [data-page="insights"] *:focus-visible {
+          outline: 2px solid var(--ins-primary);
+          outline-offset: 2px;
+        }
+      `}</style>
+
+      <main data-page="insights">
         {/* Hero Section */}
         <section className="mx-auto max-w-7xl px-6 md:px-8 py-16 md:py-24">
           <motion.div
@@ -62,7 +150,7 @@ export default function InsightsPage() {
               initial={{ opacity: 0, filter: "blur(10px)" }}
               animate={{ opacity: 1, filter: "blur(0px)" }}
               transition={{ duration: 0.6 }}
-              className="text-sm font-medium text-[#663051] dark:text-[#b65a8e] uppercase tracking-wider mb-4"
+              className="text-sm font-medium text-[var(--ins-primary)] uppercase tracking-wider mb-4"
             >
               Insights
             </motion.p>
@@ -71,7 +159,7 @@ export default function InsightsPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--ins-text)] mb-6 leading-tight"
             >
               Thoughts & Insights
             </motion.h1>
@@ -80,7 +168,7 @@ export default function InsightsPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg md:text-xl text-[#6d3e58] dark:text-[#c9a6b8] leading-relaxed"
+              className="text-lg md:text-xl text-[var(--ins-muted)] leading-relaxed"
             >
               Thought leadership, industry insights, and technical expertise
               from the Maple team.
@@ -106,7 +194,9 @@ export default function InsightsPage() {
               transition={{ duration: 0.4 }}
               className="mb-8"
             >
-              <h2 className="text-2xl font-bold">Featured</h2>
+              <h2 className="text-2xl font-bold text-[var(--ins-text)]">
+                Featured
+              </h2>
             </motion.div>
             <div className="grid gap-8">
               {featuredInsights.slice(0, 2).map((insight) => (
@@ -124,7 +214,9 @@ export default function InsightsPage() {
             transition={{ duration: 0.4 }}
             className="mb-8"
           >
-            <h2 className="text-2xl font-bold">Recent</h2>
+            <h2 className="text-2xl font-bold text-[var(--ins-text)]">
+              Recent
+            </h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredInsights.map((insight, index) => (
@@ -135,7 +227,7 @@ export default function InsightsPage() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center text-[#6d3e58] dark:text-[#c9a6b8] py-12"
+              className="text-center text-[var(--ins-muted)] py-12"
             >
               No articles found in this category.
             </motion.p>
@@ -148,9 +240,11 @@ export default function InsightsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
-            className="bg-white dark:bg-white/5 border border-[#e6d4db] dark:border-white/10 rounded-lg p-8"
+            className="bg-[var(--ins-card)] border border-[var(--ins-border)] rounded-lg p-8"
           >
-            <h2 className="text-xl font-bold mb-6">Explore by Topic</h2>
+            <h2 className="text-xl font-bold text-[var(--ins-text)] mb-6">
+              Explore by Topic
+            </h2>
             <div className="flex flex-wrap gap-2">
               {allTags.map((tag, index) => (
                 <TopicTag key={tag} tag={tag} index={index} />
@@ -166,12 +260,12 @@ export default function InsightsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-[#f3ecef] dark:bg-[#1b1018] border border-[#e6d4db] dark:border-white/10 rounded-lg p-8 md:p-12 text-center max-w-3xl mx-auto"
+            className="bg-[var(--ins-bg-alt)] border border-[var(--ins-border)] rounded-lg p-8 md:p-12 text-center max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[var(--ins-text)] mb-4">
               Subscribe to Insights
             </h2>
-            <p className="text-[#6d3e58] dark:text-[#c9a6b8] text-lg mb-8 leading-relaxed">
+            <p className="text-[var(--ins-muted)] text-lg mb-8 leading-relaxed">
               Get thought leadership and industry insights delivered to your
               inbox.
             </p>
@@ -183,11 +277,11 @@ export default function InsightsPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="flex-1 bg-white dark:bg-white/5 border-[#e6d4db] dark:border-white/10 placeholder:text-[#6d3e58]/50 focus:border-[#663051] focus:ring-[#663051]"
+                  className="flex-1 bg-[var(--ins-card)] border-[var(--ins-border)] text-[var(--ins-text)] placeholder:text-[var(--ins-muted)] focus:border-[var(--ins-primary)] focus:ring-[var(--ins-primary)]"
                 />
                 <Button
                   type="submit"
-                  className="bg-[#663051] dark:bg-[#b65a8e] text-white hover:bg-[#8c3f6e] dark:hover:bg-[#8c3f6e] transition-colors"
+                  className="bg-[var(--ins-primary)] text-white hover:bg-[var(--ins-secondary)] transition-colors"
                 >
                   <Mail className="h-4 w-4 mr-2" />
                   Subscribe
@@ -196,7 +290,7 @@ export default function InsightsPage() {
             </form>
           </motion.div>
         </section>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }
