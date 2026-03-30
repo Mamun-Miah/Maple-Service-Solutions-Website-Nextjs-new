@@ -13,8 +13,12 @@ import {
   Calendar,
   CheckCircle2,
   Send,
+  Twitter,
+  Linkedin,
+  Facebook,
 } from "lucide-react";
 import { toast } from "sonner";
+import Link from "next/link";
 
 // export const metadata = {
 //   title: "Contact",
@@ -183,13 +187,13 @@ export default function ContactPage() {
                   <div>
                     <div className="font-semibold mb-1">Email Us</div>
                     <div className="text-muted-foreground text-sm group-hover:text-foreground transition-colors">
-                      hello@mapleservice.com
+                      info@mapleitfirm.com
                     </div>
                   </div>
                 </a>
 
                 <a
-                  href="https://wa.me/8801234567890"
+                  href="https://wa.me/01734114388"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="glass p-6 rounded-2xl card-hover flex gap-4 items-start group"
@@ -242,7 +246,7 @@ export default function ContactPage() {
             </div>
 
             {/* Download Profile */}
-            <div className="aurora-gradient-subtle p-6 rounded-2xl text-center">
+            {/* <div className="aurora-gradient-subtle p-6 rounded-2xl text-center">
               <Badge className="mb-3">Resources</Badge>
               <h3 className="font-semibold mb-2">Company Profile</h3>
               <p className="text-sm text-muted-foreground mb-4">
@@ -252,7 +256,7 @@ export default function ContactPage() {
               <Button variant="outline" className="w-full">
                 Download PDF
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -266,20 +270,38 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                city: "Dhaka",
+                city: "Location",
                 country: "Bangladesh",
-                address: "Gulshan 1, Dhaka 1212",
+                address: "Uttara, Dhaka",
               },
               {
-                city: "New York",
-                country: "United States",
-                address: "Manhattan, New York",
+                city: "Contact",
+                country: "contact@mapleitfirm.com",
+                address: "+01734114388",
               },
               {
-                city: "London",
-                country: "United Kingdom",
-                address: "Central London",
+                city: "Social",
+                country: "",
+                address: <div className="flex items-center justify-content gap-3">
+                <Link href="/">
+                  <Button variant="ghost" size="icon" className="h-9 w-9">
+                    <Twitter className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="https://www.linkedin.com/company/msslbd/posts/?feedView=all">
+                  <Button variant="ghost" size="icon" className="h-9 w-9">
+                    <Linkedin className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="https://www.facebook.com/mapleitfirm/">
+                  <Button variant="ghost" size="icon" className="h-9 w-9">
+                    <Facebook className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>,
               },
+
+               
             ].map((office, index) => (
               <div key={index} className="glass p-6 rounded-2xl text-center">
                 <div className="text-2xl font-bold mb-1">{office.city}</div>

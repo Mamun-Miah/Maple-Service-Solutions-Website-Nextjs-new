@@ -12,6 +12,7 @@ export interface Product {
   status: "live" | "beta" | "coming-soon"
   website?: string
   caseStudy?: string
+  href:string;
 }
 
 export const products: Product[] = [
@@ -34,6 +35,7 @@ export const products: Product[] = [
     ],
     techStack: ["TypeScript", "Python", "PostgreSQL", "Redis", "AWS"],
     status: "live",
+    href:'trustos'
   },
   {
     id: "voice-erp",
@@ -54,6 +56,7 @@ export const products: Product[] = [
     ],
     techStack: ["Node.js", "Python", "MongoDB", "Twilio", "OpenAI"],
     status: "live",
+      href:'voice-erp'
   },
   {
     id: "infinitylearn",
@@ -74,6 +77,7 @@ export const products: Product[] = [
     ],
     techStack: ["Python", "TensorFlow", "React", "PostgreSQL", "AWS"],
     status: "beta",
+      href:'infinitylearn'
   },
   {
     id: "promptsite",
@@ -94,6 +98,7 @@ export const products: Product[] = [
     ],
     techStack: ["Next.js", "OpenAI", "Vercel", "TailwindCSS", "shadcn/ui"],
     status: "beta",
+      href:'promptsite'
   },
   {
     id: "distribution-os",
@@ -114,6 +119,7 @@ export const products: Product[] = [
     ],
     techStack: ["TypeScript", "Python", "PostgreSQL", "Google Maps API", "AWS"],
     status: "live",
+      href:'distribution-os'
   },
 ]
 

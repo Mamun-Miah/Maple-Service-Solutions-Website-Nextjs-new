@@ -41,7 +41,6 @@ interface PulseRevealProps {
   wordDelay?: number;
 }
 import {
-  // PulseReveal,
   ConstructiveIntelligence,
   FlowLineReveal,
   MagneticEntrance,
@@ -77,11 +76,15 @@ import {
   Wallet,
 } from "lucide-react";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
+
+  const router = useRouter()
   useEffect(() => {
     initGlowingText();
   }, []);
+
   const industryIcons: Record<string, any> = {
     fintech: Wallet,
     healthtech: HeartPulse,
@@ -120,11 +123,9 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* <PulseReveal delay={0.2} wordDelay={0.12}> */}
             <div className="hero-section-head">
               <p id="glowing_text">AI · Platforms · Design · Engineering</p>
             </div>
-            {/* </PulseReveal> */}
 
             <h1 className="text-heading text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
               <ConstructiveIntelligence />
@@ -139,13 +140,13 @@ export default function HomePage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <MagneticEntrance delay={1} strength={0.3}>
-                <Button size="lg" className="group">
+                <Button onClick={()=> router.push('/contact')} size="lg" className="group">
                   Start a Project
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </MagneticEntrance>
               <MagneticEntrance delay={1.15} strength={0.3}>
-                <Button size="lg" variant="outline" className="group">
+                <Button onClick={()=> router.push('/products')} size="lg" variant="outline" className="group">
                   Explore Products
                   <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:-translate-y-1" />
                 </Button>
@@ -196,7 +197,7 @@ export default function HomePage() {
           SECTION B - Identity Triangle
           ======================================== */}
       <ScrollReveal direction="up" delay={0.1}>
-        <section className="section-container   bg-indigo-hero overlay-indigo section-vignette">
+        <section className="section-container bg-indigo-hero overlay-indigo section-vignette">
           <div className="content-max">
             <SectionHeader
               align="center"
@@ -281,6 +282,7 @@ export default function HomePage() {
                     name={product.name}
                     description={product.tagline}
                     tags={product.tags.slice(0, 3)}
+                    href={`/products/${product.href}` }
                   />
                 </SlideFromDepth>
               ))}
@@ -326,6 +328,7 @@ export default function HomePage() {
                       title={service.name}
                       description={service.tagline}
                       icon={<CheckCircle2 className="h-6 w-6" />}
+                      slug={`/services/${service.slug}`}
                     />
                   </SequentialIntelligence>
                 ))}
@@ -453,7 +456,7 @@ export default function HomePage() {
                 },
               ].map((item, index) => (
                 <LiftOnAwareness key={index} delay={index * 0.12}>
-                  <div className="h-full p-6 rounded-2x glass">
+                  <div className="h-full p-6 rounded-2xl glass">
                     <div className="w-12 h-12 rounded-xl bg-linear-to-br from-primary/20 to-accent/20 flex items-center justify-center text-primary mb-4">
                       {item.icon}
                     </div>

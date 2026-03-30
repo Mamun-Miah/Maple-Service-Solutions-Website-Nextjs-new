@@ -36,7 +36,7 @@ export function CaseStudyCard({
       >
         {image && (
           <div className="relative h-48 md:h-56 w-full overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10" />
+            <div className="inset-0 bg-gradient-to-t from-background/80 to-transparent z-10" />
             <div
               className="w-full h-full bg-gradient-to-br from-primary/10 to-accent/10"
               style={{

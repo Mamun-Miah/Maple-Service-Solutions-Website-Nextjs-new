@@ -11,6 +11,7 @@ export interface Service {
     description: string;
   }>;
   caseStudies?: string[];
+  href:string;
 }
 
 export const services: Service[] = [
@@ -55,6 +56,7 @@ export const services: Service[] = [
       },
     ],
     caseStudies: ["ai-startup-launch", "fintech-redesign"],
+    href:'brand-identity'
   },
   {
     id: "product-design",
@@ -97,6 +99,7 @@ export const services: Service[] = [
       },
     ],
     caseStudies: ["ai-startup-launch", "fintech-redesign"],
+    href:'product-design'
   },
   {
     id: "web-experiences",
@@ -139,6 +142,7 @@ export const services: Service[] = [
       },
     ],
     caseStudies: ["retail-distribution"],
+    href:'web-experiences'
   },
   {
     id: "engineering",
@@ -181,6 +185,7 @@ export const services: Service[] = [
       },
     ],
     caseStudies: ["fintech-redesign", "retail-distribution"],
+    href:'engineering'
   },
   {
     id: "ai-automation",
@@ -223,6 +228,7 @@ export const services: Service[] = [
       },
     ],
     caseStudies: ["fintech-redesign"],
+    href:'ai-automation'
   },
   {
     id: "growth",
@@ -265,6 +271,7 @@ export const services: Service[] = [
       },
     ],
     caseStudies: ["fintech-redesign"],
+    href:'growth'
   },
 ];
 

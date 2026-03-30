@@ -6,12 +6,14 @@ import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
 
 export interface ServiceCardProps {
   icon: React.ReactNode
   title: string
   description: string
   className?: string
+  slug:string;
 }
 
 export function ServiceCard({
@@ -19,7 +21,10 @@ export function ServiceCard({
   title,
   description,
   className,
+  slug
 }: ServiceCardProps) {
+
+  const router = useRouter()
   return (
     <motion.div
       whileHover={{ y: -4 }}
@@ -41,7 +46,7 @@ export function ServiceCard({
           </div>
         </CardContent>
         <CardFooter className="p-6 pt-0">
-          <Button variant="ghost" className="group w-full justify-between">
+          <Button onClick={()=> router.push(slug)} variant="ghost" className="group w-full justify-between">
             Learn More
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>

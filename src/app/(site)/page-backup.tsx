@@ -217,6 +217,7 @@ export default function HomePage() {
                   name={product.name}
                   description={product.tagline}
                   tags={product.tags.slice(0, 3)}
+                  href={`/products/${product.slug}`}
                 />
               ))}
             </StaggerReveal>

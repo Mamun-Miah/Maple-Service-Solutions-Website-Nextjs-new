@@ -826,14 +826,20 @@
 
 .bg-indigo-hero {
   background-image: url('/backgrounds/indigo/hero-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .bg-indigo-section {
   background-image: url('/backgrounds/indigo/section-bg.png');
+    background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .bg-indigo-accent {
   background-image: url('/backgrounds/indigo/soft-accent-bg.png');
+    background-size: cover;
+  background-repeat: no-repeat;
 }
 
 /* Indigo Theme Overlay - Perfect Blend */

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
 
 export interface ProductCardProps {
   name: string
@@ -14,6 +15,7 @@ export interface ProductCardProps {
   tags: string[]
   icon?: React.ReactNode
   className?: string
+  href:string;
 }
 
 export function ProductCard({
@@ -22,7 +24,10 @@ export function ProductCard({
   tags,
   icon,
   className,
+  href
 }: ProductCardProps) {
+
+  const router = useRouter()
   return (
     <motion.div
       whileHover={{ y: -4 }}
@@ -55,7 +60,7 @@ export function ProductCard({
           </div>
         </CardContent>
         <CardFooter>
-          <Button variant="ghost" className="group w-full justify-between">
+          <Button onClick={()=> router.push(href) } variant="ghost" className="group w-full justify-between">
             View Product
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>

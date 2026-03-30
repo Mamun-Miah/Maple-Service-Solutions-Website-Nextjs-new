@@ -70,7 +70,7 @@ export function CinematicLift({
   return (
     <motion.div
       ref={ref}
-      className={cn("relative overflow-hidden group", className)}
+      className={cn("relative group", className)}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
