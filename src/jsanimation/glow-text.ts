@@ -20,9 +20,11 @@ export function initGlowingText() {
   const words = [...textElement.querySelectorAll("span")];
   let index = 0;
 
-  setInterval(() => {
+  const intervalId = setInterval(() => {
     words.forEach(word => word.classList.remove("glow"));
     words[index].classList.add("glow");
     index = (index + 1) % words.length;
   }, 800);
+
+  return () => clearInterval(intervalId);
 }

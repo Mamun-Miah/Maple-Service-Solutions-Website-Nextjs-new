@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Github, Linkedin, Twitter } from "lucide-react";
+import { Facebook, Github, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -48,13 +48,13 @@ export function Footer() {
                 platforms, design, engineering, and growth systems under one
                 roof.
               </p>
-              <div className="flex gap-3">
-                <Link href="/">
+              <div className="flex  gap-3">
+                <Link href="https://www.instagram.com/mapleitfirm/">
                   <Button variant="ghost" size="icon" className="h-9 w-9">
-                    <Twitter className="h-4 w-4" />
+                    <Instagram className="h-4 w-4" />
                   </Button>
                 </Link>
-                <Link href="https://www.linkedin.com/company/msslbd/posts/?feedView=all">
+                <Link href="https://bd.linkedin.com/company/msslbd">
                   <Button variant="ghost" size="icon" className="h-9 w-9">
                     <Linkedin className="h-4 w-4" />
                   </Button>
@@ -62,6 +62,11 @@ export function Footer() {
                 <Link href="https://www.facebook.com/mapleitfirm/">
                   <Button variant="ghost" size="icon" className="h-9 w-9">
                     <Facebook className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="https://www.youtube.com/@msslbd">
+                  <Button variant="ghost" size="icon" className="h-9 w-9">
+                    <Youtube className="h-4 w-4" />
                   </Button>
                 </Link>
               </div>

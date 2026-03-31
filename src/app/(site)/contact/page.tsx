@@ -16,6 +16,8 @@ import {
   Twitter,
   Linkedin,
   Facebook,
+  Instagram,
+  Youtube,
 } from "lucide-react";
 import { toast } from "sonner";
 import Link from "next/link";
@@ -283,12 +285,12 @@ export default function ContactPage() {
                 city: "Social",
                 country: "",
                 address: <div className="flex items-center justify-content gap-3">
-                <Link href="/">
+                <Link href="https://www.instagram.com/mapleitfirm/">
                   <Button variant="ghost" size="icon" className="h-9 w-9">
-                    <Twitter className="h-4 w-4" />
+                    <Instagram className="h-4 w-4" />
                   </Button>
                 </Link>
-                <Link href="https://www.linkedin.com/company/msslbd/posts/?feedView=all">
+                <Link href="https://bd.linkedin.com/company/msslbd">
                   <Button variant="ghost" size="icon" className="h-9 w-9">
                     <Linkedin className="h-4 w-4" />
                   </Button>
@@ -296,6 +298,11 @@ export default function ContactPage() {
                 <Link href="https://www.facebook.com/mapleitfirm/">
                   <Button variant="ghost" size="icon" className="h-9 w-9">
                     <Facebook className="h-4 w-4" />
+                  </Button>
+                </Link>
+                 <Link href="https://www.youtube.com/@msslbd">
+                  <Button variant="ghost" size="icon" className="h-14 w-14">
+                    <Youtube size={80} />
                   </Button>
                 </Link>
               </div>,

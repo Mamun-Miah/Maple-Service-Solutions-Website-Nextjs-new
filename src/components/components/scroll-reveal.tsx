@@ -177,7 +177,7 @@ export function ParallaxScroll({
 
     return () => {
       tl.kill()
-      ScrollTrigger.getAll().forEach((t) => t.kill())
+      // ScrollTrigger.getAll().forEach((t) => t.kill())
     }
   }, [speed])
 
