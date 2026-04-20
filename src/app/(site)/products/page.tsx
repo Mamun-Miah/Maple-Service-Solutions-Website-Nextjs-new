@@ -26,7 +26,7 @@ export default function ProductsPage() {
   const liveCount = products.filter((p) => p.status === "live").length;
   const betaCount = products.filter((p) => p.status === "beta").length;
   const comingSoonCount = products.filter(
-    (p) => p.status === "coming-soon",
+    (p) => p.status === "coming-soon"
   ).length;
 
   const ecosystemRef = useRef<HTMLDivElement>(null);
@@ -40,13 +40,10 @@ export default function ProductsPage() {
       data-page="products"
       className="relative overflow-hidden min-h-screen"
     >
-      {/* ERO SECTION*/}
-
+      {/* HERO SECTION */}
       <ProductsHero />
 
-      {/* ========================================
-         ECOSYSTEM STRIP
-         ======================================== */}
+      {/* ECOSYSTEM STRIP */}
       <section className="mx-auto max-w-7xl px-6 md:px-8 py-10">
         <motion.div
           ref={ecosystemRef}
@@ -67,9 +64,7 @@ export default function ProductsPage() {
         </motion.div>
       </section>
 
-      {/* ========================================
-         FILTERS SECTION
-         ======================================== */}
+      {/* FILTERS SECTION */}
       <section className="mx-auto max-w-7xl px-6 md:px-8 py-10">
         <ProductsFilters
           activeFilter={activeFilter}
@@ -77,9 +72,7 @@ export default function ProductsPage() {
         />
       </section>
 
-      {/* ========================================
-         PRODUCT GRID SECTION
-         ======================================== */}
+      {/* PRODUCT GRID SECTION */}
       <section
         id="products-grid"
         className="mx-auto max-w-7xl px-6 md:px-8 pb-16"
@@ -112,6 +105,8 @@ export default function ProductsPage() {
                       status={product.status}
                       slug={product.slug}
                       index={index}
+                      image={product.image}
+                      website={product.website}
                     />
                   ))}
               </div>
@@ -146,6 +141,8 @@ export default function ProductsPage() {
                       status={product.status}
                       slug={product.slug}
                       index={index}
+                      image={product.image}
+                      website={product.website}
                     />
                   ))}
               </div>
@@ -180,6 +177,8 @@ export default function ProductsPage() {
                       status={product.status}
                       slug={product.slug}
                       index={index}
+                      image={product.image}
+                      website={product.website}
                     />
                   ))}
               </div>
@@ -196,9 +195,7 @@ export default function ProductsPage() {
         )}
       </section>
 
-      {/* ========================================
-         BUILD CUSTOM CTA SECTION
-         ======================================== */}
+      {/* BUILD CUSTOM CTA SECTION */}
       <section className="mx-auto max-w-7xl px-6 md:px-8 pb-20">
         <ProductsCTA />
       </section>

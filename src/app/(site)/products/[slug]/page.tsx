@@ -6,11 +6,12 @@ import { Badge } from "@/components/ui/badge"
 import { SectionHeader } from "@/components/components/section-header"
 import { ArrowRight, ExternalLink, CheckCircle2, Code2, Rocket, Shield, Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -20,7 +21,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const product = getProductBySlug(params.slug)
+  const { slug } = await params
+  const product = getProductBySlug(slug)
 
   if (!product) {
     return {
@@ -34,8 +36,9 @@ export async function generateMetadata({ params }: PageProps) {
   }
 }
 
-export default function ProductPage({ params }: PageProps) {
-  const product = getProductBySlug(params.slug)
+export default async function ProductPage({ params }: PageProps) {
+  const { slug } = await params
+  const product = getProductBySlug(slug)
 
   if (!product) {
     notFound()
@@ -88,10 +91,12 @@ export default function ProductPage({ params }: PageProps) {
 
           <div className="flex flex-wrap gap-4 mt-8">
             {product.website && (
-              <Button size="lg" className="group">
-                Visit Website
-                <ExternalLink className="ml-2 h-4 w-4" />
-              </Button>
+              <a href={product.website} target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="group">
+                  Visit Website
+                  <ExternalLink className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
             )}
             <Link href="/contact">
               <Button size="lg" variant="outline" className="group">
@@ -101,6 +106,22 @@ export default function ProductPage({ params }: PageProps) {
             </Link>
           </div>
         </div>
+
+        {/* Product Image - Only for live products */}
+        {product.image && (
+          <div className="mb-16">
+            <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-border bg-card">
+              <Image
+                src={product.image}
+                alt={`${product.name} preview`}
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1024px"
+                priority
+              />
+            </div>
+          </div>
+        )}
 
         {/* Features */}
         <div className="mb-16">
@@ -165,7 +186,7 @@ export default function ProductPage({ params }: PageProps) {
             Interested in {product.name}?
           </h3>
           <p className="text-muted-foreground mb-8">
-            Let's discuss how this product can help your business.
+            Let&apos;s discuss how this product can help your business.
           </p>
           <Link href="/contact">
             <Button size="lg">
